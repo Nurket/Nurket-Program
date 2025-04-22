@@ -2,14 +2,31 @@
 <html>
   <head>
     <title><%= title %></title>
+    <link rel="stylesheet" href="/css/index.css">
     <%- include('./partials/head.ejs') %>
+    
   </head>
+  <div id="background">
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
 
-    <button onclick="window.location.href='/game'">Go to Game</button>
+<h1>Choose your class</h1>
+<div class="image-button-container">
+  <div class="image-wrapper">
+    <img src="/images/knight.png" alt="Knight" width="25%" data-image-id="1" class="image-button">
+    <p class="image-text">The Valiant Knight</p>
+  </div>
+  <div class="image-wrapper">
+    <img src="/images/archer.png" alt="Archer" width="25%" data-image-id="2" class="image-button">
+    <p class="image-text">The Precise Archer</p>
+  </div>
+  <div class="image-wrapper">
+    <img src="/images/huntress.png" alt="Huntress" width="25%" data-image-id="3" class="image-button">
+    <p class="image-text">The Agile Huntress</p>
+  </div>
+</div>
+
 
     <%- include('./partials/scripts.ejs') %>
   </body>
+  </div>
 </html>
