@@ -6,27 +6,25 @@
     <%- include('./partials/head.ejs') %>
     
   </head>
-  <div id="background">
   <body>
-
-<h1>Choose your class</h1>
-<div class="image-button-container">
-  <div class="image-wrapper">
-    <img src="/images/knight.png" alt="Knight" width="25%" data-image-id="1" class="image-button">
-    <p class="image-text">The Valiant Knight</p>
-  </div>
-  <div class="image-wrapper">
-    <img src="/images/archer.png" alt="Archer" width="25%" data-image-id="2" class="image-button">
-    <p class="image-text">The Precise Archer</p>
-  </div>
-  <div class="image-wrapper">
-    <img src="/images/huntress.png" alt="Huntress" width="25%" data-image-id="3" class="image-button">
-    <p class="image-text">The Agile Huntress</p>
-  </div>
+<div id="startMenue">
+<h1>Game Name Placeholder</h1>
+  <button onclick="window.location.href='/characterCreation'">Begin journey</button>
+   
 </div>
 
+<div id="audioPlayer">
+  <i id="audioIcon" class="bi-volume-down-fill" style="cursor: pointer; font-size: 32px;"></i>
+  <audio id="backgroundMusic" loop autoplay style="display: none;">
+    <source src="music/MenuMusic.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</div>
 
     <%- include('./partials/scripts.ejs') %>
+    <script src="/js/index.js"></script>
+    <div id="watermark">Made By Tom</div>
   </body>
+  
   </div>
 </html>
