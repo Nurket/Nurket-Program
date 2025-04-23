@@ -1,18 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const imageContainer = document.querySelector('.image-button-container');
-    const imageButtons = imageContainer.querySelectorAll('.image-button');
-    let activeImage = null;
-  
-    imageButtons.forEach(img => {
-      img.addEventListener('click', function() {
-        if (activeImage) {
-          activeImage.classList.remove('active');
-        }
-        this.classList.add('active');
-        activeImage = this;
-  
-        const imageId = this.dataset.imageId;
-        console.log(`Image with ID ${imageId} is now active.`);
-      });
+    const audioIcon = document.getElementById('audioIcon');
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    let isPlaying = true;
+
+    audioIcon.addEventListener('click', function() {
+      if (isPlaying) {
+        backgroundMusic.pause();
+        audioIcon.classList.remove('bi-volume-down-fill');
+        audioIcon.classList.add('bi-volume-mute-fill'); // Example: Change to mute icon
+        isPlaying = false;
+      } else {
+        backgroundMusic.play();
+        audioIcon.classList.remove('bi-volume-mute-fill');
+        audioIcon.classList.add('bi-volume-down-fill'); // Change back to music note
+        isPlaying = true;
+      }
     });
   });
+
+
+
+

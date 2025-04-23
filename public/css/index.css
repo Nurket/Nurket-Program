@@ -1,45 +1,46 @@
-#background {
-    background-color: #000000; /* Or your preferred dark color */
-  }
+@import '/bootstrap-icons/font/bootstrap-icons.css';
 
+.bi-volume-down-fill {
+  color: white; /* Change 'white' to your desired color */
+}
 
+.bi-volume-mute-fill {
+  color: white; /* Change 'white' to your desired color */
+}
 
+html, body {
+  background-image: url('/images/wall.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-position: center;
+  background-color: black; /* Try applying here as well */
+}
 
+#startMenue {
+  width: 300px;
+  text-align: center;
+  padding: 20px;
+  color: rgb(235, 211, 0);
+}
 
-  .image-button-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .image-wrapper {
-    display: flex;
-    flex-direction: column; /* Stack image and text vertically */
-    align-items: center; /* Center the image and text horizontally */
-  }
-  
-  .image-button {
-    cursor: pointer; /* Indicate the image is clickable */
-    border: 2px solid transparent; /* Default border for the image */
-    padding: 5px; /* Optional padding for the image */
-  }
-  
-  .image-wrapper img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 5px; /* Space between image and text */
-  }
-  
-  .image-wrapper p.image-text {
-    margin-top: 0;
-    font-size: 1em;
-    color: #333;
-    text-align: center; /* Center the text below the image */
-  }
-  
-  .image-button.active {
-    border-color: rgb(253, 228, 0); /* Example active state for the image */
-  }
+#startMenue button {
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+#watermark {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 12px;
+  color: #888; /* Adjust color as needed */
+}
+
+ 
