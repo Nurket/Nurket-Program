@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const classButtons = document.querySelectorAll('.class-button');
-    const classHeader = document.querySelector('.classInfo');
+    const classHeader = document.querySelector('.selectedInfo');
 
     const classInfo = {
         knight: {
@@ -40,13 +40,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const selectedGender = this.dataset.gender; // Get the gender
 
             if (classInfo[selectedClass]) {
-                let headerText = `${selectedGender === 'male' ? 'Male' : 'Female'} ${classInfo[selectedClass].name}`;
-                let detailsText = `<div class="class-sub-details">${classInfo[selectedClass].details}`;
-                if (classInfo[selectedClass].specializations) {
-                    detailsText += `<br>Specializations: ${classInfo[selectedClass].specializations.join(', ')}`;
-                }
+                let infoText = `${selectedGender === 'male' ? 'Male' : 'Female'} ${classInfo[selectedClass].name}`;
+                let detailsText = `<div>${classInfo[selectedClass].details}`;
                 detailsText += `</div>`;
-                classHeader.innerHTML = `${headerText}${detailsText}`;
+                classHeader.innerHTML = `${infoText}${detailsText}`;
             } else {
                 classHeader.textContent = "Choose your class";
             }
