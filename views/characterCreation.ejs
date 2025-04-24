@@ -13,94 +13,56 @@
                 <img src="/images/queen.png" alt="Queen" class="image-button">
             </div>
         </div>
-        <p class="dialogue">Queen Elise stares at you gently</p>
+        <p class="dialogue">"A stranger is watching you calmly..."</p>
         <button id="nextIntro">Next</button>
 
-        <p class="dialogue hidden">Queen Elise: Do not be afraid. The gods of <span id="playerNamePlaceholder"></span> have heard my prayers at last. This might seem confusing at first... but you have been summoned.</p>
+        <p class="dialogue hidden">Stranger: Do not be afraid. The gods of Feldunder have heard my prayers at last. This might seem confusing at first, but you have just been born...</p>
         <button id="nextIntro2" class="hidden">Next</button>
 
-        <p class="dialogue hidden">Queen Elise: My name is Queen Elise. I rule what's left of this castle. I'm the 48th in row and my fate seemed to be same as all of them... death... until now.</p>
+        <p class="dialogue hidden">Queen Elise: My name is Queen Elise. I rule what's left of this castle. I'm the 48th in line and was expecting the same faith as them... until you showed up. Welcome to Kingdom Of Feldunder my newborn. </p>
         <button id="nextIntro3" class="hidden">Next</button>
 
-        <p class="dialogue hidden">"Forgive my ignorance, who are you?"</p>
+        <p class="dialogue hidden">Queen Elise: Now tell me, who are you?</p>
         <input type="text" id="playerNameInput" class="hidden" placeholder="Enter your name">
         <button id="submitName" class="hidden">Accept Name</button>
     </div>
 
     <div id="classSelection" class="hidden">
-        
+        <div class="image-button-container">
+            <div class="image-wrapper">
+                <img src="/images/knightMale.png" alt="Male Knight" data-class="knight" data-gender="male" class="class-button">
+                <p class="image-text-header">Knight</p>
+                <img src="/images/knightMale.png" alt="Female Knight" data-class="knight" data-gender="female" class="class-button">
+
+            </div>
+
+            <div class="image-wrapper">
+                <img src="/images/knightMale.png" alt="Male Mage" data-class="mage" data-gender="male" class="class-button">
+                <p class="image-text-header">Mage</p>
+                <img src="/images/knightMale.png" alt="Female Mage" data-class="mage" data-gender="female" class="class-button">
+
+            </div>
+
             <h1 class="class-header">Choose your class</h1>
-            <div class="image-button-container">
-                <div class="image-wrapper">
-                    <img src="/images/knight.png" alt="Knight" data-class="knight" class="class-button">
-                    <p class="image-text-header">Knight</p>
-                    <p class="image-text">Unique Skill Tree</p>
-                    <p class="image-text">3 unique specilizations at lvl 40</p>
-                    <p class="image-text">Holy Paladin</p>
-                    <p class="image-text">Blood Knight</p>
-                    <p class="image-text">Dual wield Knight</p>
-                    
-                </div>
-                <div class="image-wrapper">
-                    <img src="/images/archer.png" alt="Archer" data-class="archer" class="class-button">
-                    <p class="image-text-header">Archer</p>
-                    <p class="image-text">Unique Skill Tree</p>
-                    <p class="image-text">3 unique specilizations at lvl 40</p>
-                    <p class="image-text">Greatbow Archer</p>
-                    <p class="image-text">Dualwield spec</p>
-                    <p class="image-text">Animal Lover</p>
-                </div>
 
+            <div class="image-wrapper">
+                <img src="/images/knightMale.png" alt="Male Archer" data-class="archer" data-gender="male" class="class-button">
+                <p class="image-text-header">Archer</p>
+                <img src="/images/knightMale.png" alt="Female Archer" data-class="archer" data-gender="female" class="class-button">
 
-                <div class="image-wrapper">
-                    <img src="/images/archer.png" alt="Necromancer" data-class="necromancer" class="class-button">
-                    <p class="image-text-header">Necromancer</p>
-                    <p class="image-text">Unique Skill Tree</p>
-                    <p class="image-text">3 unique specilizations at lvl 40</p>
-                    <p class="image-text">Swarm Lord</p>
-                    <p class="image-text">Necrotic melee</p>
-                    <p class="image-text">???</p>
-                </div>
+            </div>
 
-                <div class="image-wrapper">
-                    <img src="/images/archer.png" alt="Fighter" data-class="fighter" class="class-button">
-                    <p class="image-text-header">Fighter</p>
-                    <p class="image-text">Unique Skill Tree</p>
-                    <p class="image-text">3 unique specilizations at lvl 40</p>
-                    <p class="image-text">Swarm Lord</p>
-                    <p class="image-text">Necrotic melee</p>
-                    <p class="image-text">???</p>
-                </div>
+            <div class="image-wrapper">
+                <img src="/images/knightMale.png" alt="Male Rogue" data-class="rogue" data-gender="male" class="class-button">
+                <p class="image-text-header">Rogue</p>
+                <img src="/images/knightMale.png" alt="Female Rogue" data-class="rogue" data-gender="female" class="class-button">
 
-
-
-
-                <div class="image-wrapper">
-                    <img src="/images/huntress.png" alt="Huntress" data-class="huntress" class="class-button">
-                    <p class="image-text-header">Huntress</p>
-                    <p class="image-text">Unique Skill Tree</p>
-                    <p class="image-text">3 unique specilizations at lvl 40</p>
-                    <p class="image-text">Throwing master</p>
-                    <p class="image-text">Beast hunter</p>
-                    <p class="image-text">Spearshield</p>
-                    
-                </div>
-
-                <div class="image-wrapper">
-                    <img src="/images/bard.png" alt="Bard" data-class="bard" class="class-button">
-                    <p class="image-text-header">Mage</p>
-                    <p class="image-text">Unique Skill Tree</p>
-                    <p class="image-text">3 unique specilizations at lvl 40</p>
-                    <p class="image-text">Firelord</p>
-                    <p class="image-text">Frost King</p>
-                    <p class="image-text">Swordmage</p>
-                    
-                </div>
             </div>
         </div>
     </div>
+</div>
 
-    <%- include('./partials/scripts.ejs') %>
-    <script src="/js/characterCreation.js"></script>
+<%- include('./partials/scripts.ejs') %>
+<script src="/js/characterCreation.js"></script>
 </body>
 </html>

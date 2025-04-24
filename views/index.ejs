@@ -1,30 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/css/index.css">
-    <%- include('./partials/head.ejs') %>
-    
-  </head>
-  <body>
-<div id="startMenue">
-<h1>Game Name Placeholder</h1>
-  <button onclick="window.location.href='/characterCreation'">Begin journey</button>
-   
-</div>
-
-<div id="audioPlayer">
-  <i id="audioIcon" class="bi-volume-down-fill" style="cursor: pointer; font-size: 32px;"></i>
-  <audio id="backgroundMusic" loop autoplay style="display: none;">
-    <source src="music/MenuMusic.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-</div>
-
-    <%- include('./partials/scripts.ejs') %>
-    <script src="/js/index.js"></script>
-    <div id="watermark">Made By Tom</div>
-  </body>
-  
+<head>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <%- include('./partials/head.ejs') %>
+</head>
+<body>
+  <div id="startMenue">
+    <img src="/images/kof.png">
+    <button onclick="window.location.href='/characterCreation'">New game</button>
+    <button>Load game</button>
+    <button>Settings</button>
+    <button id="gameInfoButton">Game info</button>
   </div>
+
+  <div id="infoBoxContainer">
+    <div id="infoBox">
+      <button id="closeButton">Go back</button>
+      <p>Thank you for playing</p>
+      <p>Game is developed by Tom Olsen</p>
+      <p>Music and sound effects is made by ???</p>
+    </div>
+  </div>
+
+  <div id="watermark">Made By Tom Olsen / Music by ???
+    <div id="audioPlayer">
+      <i id="audioIcon" class="bi-volume-down-fill" style="cursor: pointer; font-size: 32px;"></i>
+      <audio id="backgroundMusic" loop autoplay style="display: none;">
+        <source src="music/MenuMusic.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+
+  <div id="snow-container"></div> <!- The container for the snow effect -->
+
+  <%- include('./partials/scripts.ejs') %>
+  <script src="/js/index.js"></script>
+  <script src="/js/gameInfo.js"></script>
+
+</body>
 </html>

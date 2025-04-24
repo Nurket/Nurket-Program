@@ -9,29 +9,57 @@
 }
 
 html, body {
-  background-image: url('/images/wall.png');
-  background-size: contain;
+  background-image: url('/images/animated_castle_deep_snow.gif');
+  background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; /* Keep the background fixed */
   margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  height: 100vh; /* Set a fixed height for the viewport */
+  overflow: hidden; /* Prevent scrolling of the body */
   background-position: center;
-  background-color: black; /* Try applying here as well */
+  background-color: black;
+}
+#startMenue {
+  width: 400px; /* Keep the width matching the image */
+  padding: 10px; /* Keep the adjusted padding */
+  color: rgb(235, 211, 0);
+  position: absolute;
+  left: 220px;
+  top: 25%;
+  transform: translateY(-50%);
+  display: flex; /* Enable Flexbox for direct children */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally along the cross-axis */
 }
 
-#startMenue {
-  width: 300px;
-  text-align: center;
-  padding: 20px;
-  color: rgb(235, 211, 0);
+#startMenue img {
+  max-width: 100%; /* Ensure it fits within the container */
+  height: auto;
+  width: auto; /* Let it adjust based on max-width */
+  margin-bottom: 10px; /* Add some space between the image and button */
 }
 
 #startMenue button {
-  padding: 10px 20px;
-  font-size: 1em;
+  padding: 12px 25px; /* Slightly more padding */
+  font-size: 1.1em;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.8); /* Darker, semi-transparent background */
+  color: #ddd; /* Light grey text for contrast */
+  border: 2px solid #555; /* Solid, dark grey border */
+  border-radius: 0; /* Sharp, square corners */
+  font-family: 'Georgia', serif; /* A classic serif font */
+  text-transform: uppercase; /* Adds a formal touch */
+  letter-spacing: 0.08em; /* Subtle letter spacing */
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.6); /* Deeper shadow */
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  min-width: 200px; /* Adjust this value as needed */
+  text-align: center; /* Center the text within the minimum width */
+}
+
+#startMenue button:hover {
+  background-color: rgba(70, 70, 70, 0.95); /* Slightly lighter on hover */
+  color: #fff;
+  border-color: #999;
   cursor: pointer;
 }
 
@@ -42,5 +70,62 @@ html, body {
   font-size: 12px;
   color: #888; /* Adjust color as needed */
 }
-
  
+
+
+
+
+/* Game Info */
+
+#infoBoxContainer {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+#infoBox {
+  background-color: #333; /* Dark background for the box */
+  color: #eee; /* Light text color */
+  padding: 30px; /* More padding for a grander feel */
+  border: 2px solid #888; /* Dark border */
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6); /* Deeper shadow */
+  position: relative;
+  /* Add a subtle texture or pattern if you have one */
+  /* background-image: url('/images/gothic_texture.png');
+  background-repeat: repeat; */
+}
+
+#closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 20px; /* Slightly larger close button */
+  color: #ccc;
+  border: none;
+  background: none;
+  padding: 5px;
+}
+
+#closeButton:hover {
+  color: #fff; /* Lighten on hover */
+}
+
+/* You might want to style the text within the info box as well */
+#infoBox p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+  /* Consider a slightly decorative but readable font */
+  /* font-family: 'YourGothicFont', sans-serif; */
+}
+
+
+
+
