@@ -1,29 +1,26 @@
 document.addEventListener('DOMContentLoaded', function() {
     const classButtons = document.querySelectorAll('.class-button');
-    const classHeader = document.querySelector('.class-header');
-    const classDetailsContainer = document.createElement('div');
-    classHeader.parentNode.insertBefore(classDetailsContainer, classHeader.nextSibling);
-    classDetailsContainer.classList.add('class-details');
+    const classHeader = document.querySelector('.classInfo');
 
     const classInfo = {
         knight: {
             name: "Knight",
-            details: "A valiant warrior with strong melee skills and heavy armor.",
+            details: "Unique Skill Tree",
             specializations: ["Holy Paladin", "Blood Knight", "Dual Wield Knight"]
         },
         mage: {
             name: "Mage",
-            details: "A master of arcane arts, wielding powerful spells.",
+            details: "Unique Skill Tree",
             specializations: ["Pyromancer", "Cryomancer", "Arcanist"]
         },
         archer: {
             name: "Archer",
-            details: "A skilled marksman deadly at long range.",
+            details: "Unique Skill Tree",
             specializations: ["Hunter", "Sharpshooter", "Ranger"]
         },
         rogue: {
             name: "Rogue",
-            details: "A stealthy and agile character specializing in deception and close combat.",
+            details: "Unique Skill Tree",
             specializations: ["Assassin", "Thief", "Shadow Dancer"]
         }
         // Add more class details as needed
@@ -43,14 +40,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const selectedGender = this.dataset.gender; // Get the gender
 
             if (classInfo[selectedClass]) {
-                classHeader.textContent = `${selectedGender === 'male' ? 'Male' : 'Female'} ${classInfo[selectedClass].name}`;
-                classDetailsContainer.innerHTML = `<p>${classInfo[selectedClass].details}</p>`;
+                let headerText = `${selectedGender === 'male' ? 'Male' : 'Female'} ${classInfo[selectedClass].name}`;
+                let detailsText = `<div class="class-sub-details">${classInfo[selectedClass].details}`;
                 if (classInfo[selectedClass].specializations) {
-                    classDetailsContainer.innerHTML += `<p>Specializations: ${classInfo[selectedClass].specializations.join(', ')}</p>`;
+                    detailsText += `<br>Specializations: ${classInfo[selectedClass].specializations.join(', ')}`;
                 }
+                detailsText += `</div>`;
+                classHeader.innerHTML = `${headerText}${detailsText}`;
             } else {
                 classHeader.textContent = "Choose your class";
-                classDetailsContainer.innerHTML = "";
             }
 
             console.log(`Class ${selectedClass} (${selectedGender}) selected.`);
