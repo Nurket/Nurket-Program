@@ -27,13 +27,6 @@ body {
   background-position: center;
 }
 
-#startMenue {
-  width: 300px;
-  text-align: center;
-  padding: 20px;
-  color: rgb(235, 211, 0);
-}
-
 #startMenue button {
   padding: 10px 20px;
   font-size: 1em;
@@ -63,7 +56,7 @@ body {
   margin-bottom: 20px;
 }
 
-#introSelection, #classSelection {
+#introSelection {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -98,51 +91,112 @@ body {
   cursor: pointer;
 }
 
-#classSelection #background {
-  padding: 20px;
-  border-radius: 8px;
+/* ----------- CLASS SELECTION STYLES WITH SIDEBAR ----------- */
+#classSelection {
+  display: flex; /* Enable flexbox for the class selection area */
+  /* Remove the flex-direction, align-items, and justify-content that centered content */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  text-align: left; /* Align text to the left within the main content */
 }
 
-#classSelection h1 {
-  margin-bottom: 20px;
-  color: #f9fd00;
+.sidebar {
+  width: 200px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Keep horizontal centering */
+}
+
+#userProfile {
+  text-align: center;
+  /* Remove or adjust margin-top if needed */
+  /* margin-top: 100px; */
+}
+
+#userProfile h1 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 1.5em;
+}
+
+.classInfo {
+  font-size: 0.9em;
+  color: #ddd;
+}
+
+.main-content {
+  flex-grow: 1; /* Allow the main content to take up the remaining width */
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the class selection elements */
+}
+
+.class-header-container {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: flex-start; /* Align items to the top */
+  width: 80%; /* Adjust width as needed within the main content */
+  min-height: 100px;
+  background-color: rgba(0, 0, 0, 0.8); /* Darker, semi-transparent background */
+  border: 2px solid #555; /* Solid, dark grey border */
+  border-radius: 0; /* Sharp, square corners */
+  font-family: 'Georgia', serif; /* A classic serif font */
+  text-transform: uppercase; /* Adds a formal touch */
+  letter-spacing: 0.08em; /* Subtle letter spacing */
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.6); /* Deeper shadow */
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  min-width: 200px; /* Adjust this value as needed */
+  text-align: center; /* Center the text within the minimum width */
+  margin-bottom: 20px; /* Add space below the header container */
+}
+
+.class-header-box {
+  text-align: center;
+  padding: 15px 30px;
 }
 
 .image-button-container {
   display: flex;
-  gap: 20px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
+  flex-wrap: wrap; /* Allow images to wrap to the next line */
+  justify-content: center; /* Center images horizontally */
+  gap: 20px; /* Space between image wrappers */
+  width: 80%; /* Adjust width as needed within the main content */
 }
 
-.image-wrapper {
+.image-wrapper-queen-intro {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 800px; /* Set your desired height */
+  overflow: hidden; /* If the content might exceed the wrapper */
 }
 
-.class-button {
-  width: 100px;
-  height: 100px;
-  cursor: pointer;
-  border: none;
-  background: none;
-  padding: 2px;
+.image-wrapper-queen-intro img {
+  max-width: 100%; /* Ensure the image doesn't exceed the wrapper's width */
+  max-height: 100%; /* Ensure the image doesn't exceed the wrapper's height */
+  height: auto; /* Maintain the image's aspect ratio */
 }
 
-.image-text {
-  margin-top: 5px;
-  font-size: 0.9em;
-  color: #ffffff;
-  text-align: center;
+.image-wrapper {
+  text-align: center; /* Center the images and text within the wrapper */
 }
 
 .image-wrapper img {
-  width: 50%;
-  height: auto;
+  height: 500px; /* Adjust the height of your class images */
+  width: auto; /* Maintain aspect ratio */
   margin-bottom: 5px;
+  display: block; /* Prevent inline spacing issues */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .image-button {
@@ -159,12 +213,11 @@ body {
 }
 
 .image-text-header {
-  color: #f9fd00;
+  color: #ffffff;
+  font-family: 'Georgia', serif; /* A classic serif font */
+  text-transform: uppercase; /* Adds a formal touch */
+  letter-spacing: 0.08em; /* Subtle letter spacing */
 }
 
-.class-header {
-  color: #f9fd00;
-}
-
-
-.class-details {}
+/* You might need to adjust existing styles for .image-wrapper and .image-wrapper img 
+   if they are causing layout issues with the fixed sidebar. */

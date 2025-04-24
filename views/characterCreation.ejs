@@ -6,10 +6,18 @@
     <%- include('./partials/head.ejs') %>
 </head>
 <body>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Character Creation</title>
+    <link rel="stylesheet" href="/css/characterCreation.css">
+    <%- include('./partials/head.ejs') %>
+</head>
+<body>
 <div id="background">
     <div id="introSelection">
         <div class="queen-intro">
-            <div class="image-wrapper">
+            <div class="image-wrapper-queen-intro">
                 <img src="/images/queen.png" alt="Queen" class="image-button">
             </div>
         </div>
@@ -28,39 +36,51 @@
     </div>
 
     <div id="classSelection" class="hidden">
-        <div class="image-button-container">
-            <div class="image-wrapper">
-                <img src="/images/knightMale.png" alt="Male Knight" data-class="knight" data-gender="male" class="class-button">
-                <p class="image-text-header">Knight</p>
-                <img src="/images/knightMale.png" alt="Female Knight" data-class="knight" data-gender="female" class="class-button">
-
+        <div class="sidebar">
+            <div id="userProfile">
+                <h1> ${playerName} </h1>
+                <p class="classInfo">Class info</p>
             </div>
-
-            <div class="image-wrapper">
-                <img src="/images/knightMale.png" alt="Male Mage" data-class="mage" data-gender="male" class="class-button">
-                <p class="image-text-header">Mage</p>
-                <img src="/images/knightMale.png" alt="Female Mage" data-class="mage" data-gender="female" class="class-button">
-
+        </div>
+        <div class="main-content">
+            <div class="class-header-container">
+                <div class="class-header-box">
+                    <h2 class="class-header">Choose your class</h2>
+                </div>
             </div>
+            <div class="image-button-container">
+                <div class="image-wrapper">
+                    <img src="/images/knightMale.png" alt="Male Knight" data-class="knight" data-gender="male" class="class-button">
+                    <p class="image-text-header">Knight</p>
+                    <img src="/images/knightFemale.png" alt="Female Knight" data-class="knight" data-gender="female" class="class-button">
+                </div>
 
-            <h1 class="class-header">Choose your class</h1>
+                <div class="image-wrapper">
+                    <img src="/images/knightMale.png" alt="Male Mage" data-class="mage" data-gender="male" class="class-button">
+                    <p class="image-text-header">Mage</p>
+                    <img src="/images/knightMale.png" alt="Female Mage" data-class="mage" data-gender="female" class="class-button">
+                </div>
 
-            <div class="image-wrapper">
-                <img src="/images/knightMale.png" alt="Male Archer" data-class="archer" data-gender="male" class="class-button">
-                <p class="image-text-header">Archer</p>
-                <img src="/images/knightMale.png" alt="Female Archer" data-class="archer" data-gender="female" class="class-button">
+                <div class="image-wrapper">
+                    <img src="/images/knightMale.png" alt="Male Archer" data-class="archer" data-gender="male" class="class-button">
+                    <p class="image-text-header">Archer</p>
+                    <img src="/images/knightMale.png" alt="Female Archer" data-class="archer" data-gender="female" class="class-button">
+                </div>
 
-            </div>
-
-            <div class="image-wrapper">
-                <img src="/images/knightMale.png" alt="Male Rogue" data-class="rogue" data-gender="male" class="class-button">
-                <p class="image-text-header">Rogue</p>
-                <img src="/images/knightMale.png" alt="Female Rogue" data-class="rogue" data-gender="female" class="class-button">
-
+                <div class="image-wrapper">
+                    <img src="/images/knightMale.png" alt="Male Rogue" data-class="rogue" data-gender="male" class="class-button">
+                    <p class="image-text-header">Rogue</p>
+                    <img src="/images/knightMale.png" alt="Female Rogue" data-class="rogue" data-gender="female" class="class-button">
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<%- include('./partials/scripts.ejs') %>
+<script src="/js/characterCreation.js"></script>
+</body>
+</html>
 
 <%- include('./partials/scripts.ejs') %>
 <script src="/js/characterCreation.js"></script>
