@@ -128,7 +128,7 @@ h2.class-header {
   width: 80%; /* Adjust width as needed within the main content */
   min-height: 100px;
   background-color: rgba(0, 0, 0, 0.8); /* Darker, semi-transparent background */
-  border: 2px solid #555; /* Solid, dark grey border */
+  border: 2px solid #ffffff; /* Solid, dark grey border */
   border-radius: 0; /* Sharp, square corners */
   font-family: 'Georgia', serif; /* A classic serif font */
   text-transform: uppercase; /* Adds a formal touch */
@@ -184,13 +184,15 @@ h2.class-header {
   cursor: pointer;
   border: 2px solid transparent;
   padding: 5px;
+  transition: box-shadow 3s ease-in-out;
 }
 
 .class-button.active {
-  border-color: rgb(253, 228, 0);
+  border-color: rgb(255, 255, 255);
   border-width: 2px;
   border-style: solid;
   padding: 0px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* Add a yellow glow */
 }
 
 .image-text-header {

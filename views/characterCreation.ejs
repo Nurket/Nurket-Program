@@ -40,8 +40,9 @@
         <div class="main-content">
             <div class="class-header-container">
                 <div class="class-header-box">
-                    <h2 class="class-header">Choose your class</h2>
-                    <p class="selectedInfo"><p/>
+                <div id="playerName"></div>
+                    <div class="top-header"><h2 class="class-header"><button id="class-back">Back</button> Choose your class <button id="class-continue">Continue</button> </h2></div>
+                    <p class="selectedInfo">No class restrictions <br> Unique skill tree for each class<p/>
                 </div>
             </div>
             <div class="image-button-container">
@@ -71,6 +72,11 @@
             </div>
         </div>
     </div>
+
+    <div id="classSelection" class="hidden">
+    </div>
+
+
 </div>
 
 <%- include('./partials/scripts.ejs') %>
