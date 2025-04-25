@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     const classButtons = document.querySelectorAll('.class-button');
     const classHeader = document.querySelector('.selectedInfo');
+    const classConfirmButton = document.getElementById('class-confirm');
+    const classSelectionDiv = document.getElementById('classSelection');
+    const classBackgroundDiv = document.getElementById('classChooseBackground');
+    const classBackgroundInfo = classBackgroundDiv.querySelector('.selectedInfo'); // Target the selectedInfo in the background div
 
     const classInfo = {
         knight: {
@@ -27,6 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     let activeClassButton = null;
+    let selectedClassOnly = null; // To store just the class name
+    let selectedGender = null;
+    let selectedCharacterClass = null; // Variable to store the formatted class
 
     classButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -36,35 +43,49 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('active');
             activeClassButton = this;
 
-            const selectedClass = this.dataset.class;
-            const selectedGender = this.dataset.gender; // Get the gender
+            selectedClassOnly = this.dataset.class;
+            selectedGender = this.dataset.gender;
+            selectedCharacterClass = `${selectedGender} ${selectedClassOnly}`;
 
-            if (classInfo[selectedClass]) {
-                let infoText = `${selectedGender === 'male' ? 'Male' : 'Female'} ${classInfo[selectedClass].name}`;
-                let detailsText = `<div>${classInfo[selectedClass].details}`;
+            if (classInfo[selectedClassOnly]) {
+                let infoText = `${selectedGender === 'male' ? 'Male' : 'Female'} ${classInfo[selectedClassOnly].name}`;
+                let detailsText = `<div>${classInfo[selectedClassOnly].details}`;
                 detailsText += `</div>`;
                 classHeader.innerHTML = `${infoText}${detailsText}`;
             } else {
                 classHeader.textContent = "Choose your class";
             }
 
-            console.log(`Class ${selectedClass} (${selectedGender}) selected.`);
+            console.log(`Class ${selectedClassOnly} (${selectedGender}) selected.`);
             // You can add further logic here
         });
     });
-});
 
+    classConfirmButton.addEventListener('click', () => {
+        if (selectedCharacterClass) {
+            classSelectionDiv.classList.add('hidden');
+            classBackgroundDiv.classList.remove('hidden');
+            classBackgroundInfo.innerHTML = `${selectedCharacterClass} <br>`; // Display the formatted class
+            console.log(`Confirmed class: ${selectedCharacterClass}`);
+            // Potentially add more details to display about the class in the background section
+        } else {
+            alert('Please select a class before continuing.');
+        }
+    });
+});
 
 //Intro
 document.addEventListener('DOMContentLoaded', () => {
     const introSelection = document.getElementById('introSelection');
     const classSelection = document.getElementById('classSelection');
     const playerNameDisplay = document.getElementById('playerName'); // Get the playerName div
+    const classBackgroundDiv = document.getElementById('classChooseBackground'); // Get the background div
+    const classBackgroundBackButton = document.getElementById('class-background-back'); // Get the back button in background selection
 
     const nextButton1 = document.getElementById('nextIntro');
     const nextButton2 = document.getElementById('nextIntro2');
     const nextButton3 = document.getElementById('nextIntro3');
-    const backButton = document.getElementById('class-back');
+    const classBackButton = document.getElementById('class-back');
     const nameInput = document.getElementById('playerNameInput');
     const submitNameButton = document.getElementById('submitName');
     const dialogueElements = document.querySelectorAll('#introSelection .dialogue');
@@ -80,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     nameInput.classList.add('hidden');
     submitNameButton.classList.add('hidden');
     classSelection.classList.add('hidden');
+    classBackgroundDiv.classList.add('hidden'); // Initially hide the background div
     playerNameDisplay.classList.add('hidden'); // Initially hide the playerName display
 
     nextButton1.addEventListener('click', () => {
@@ -119,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    backButton.addEventListener('click', () => {
+    classBackButton.addEventListener('click', () => {
         classSelection.classList.add('hidden');
         playerNameDisplay.classList.add('hidden'); // Hide the playerName display when going back
         introSelection.classList.remove('hidden');
@@ -136,5 +158,11 @@ document.addEventListener('DOMContentLoaded', () => {
         nameInput.classList.remove('hidden');
         submitNameButton.classList.remove('hidden');
         currentIntroStep = 3;
+    });
+
+    // Back button for the background selection
+    classBackgroundBackButton.addEventListener('click', () => {
+        classBackgroundDiv.classList.add('hidden');
+        classSelection.classList.remove('hidden');
     });
 });
