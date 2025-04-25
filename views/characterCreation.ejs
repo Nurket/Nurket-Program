@@ -40,8 +40,8 @@
         <div class="main-content">
             <div class="class-header-container">
                 <div class="class-header-box">
-                <div id="playerName"></div>
-                    <div class="top-header"><h2 class="class-header"><button id="class-back">Back</button> Choose your class <button id="class-continue">Continue</button> </h2></div>
+                 <div id="playerName"></div>
+                    <div class="top-header"><h2 class="class-header"><button id="class-back">Back</button> Choose your class <button id="class-confirm">Continue</button> </h2></div>
                     <p class="selectedInfo">No class restrictions <br> Unique skill tree for each class<p/>
                 </div>
             </div>
@@ -73,16 +73,70 @@
         </div>
     </div>
 
-    <div id="classSelection" class="hidden">
+    <div id="classChooseBackground" class="hidden">
+       <div class="class-background-main">
+           <div class="class-header-container">
+                <div class="class-header-box">
+                 <div id="playerName"></div>
+                    <div class="top-header"><h2 class="class-header"><button id="class-background-back">Back</button> Choose your background <button id="class-background-confirm">Continue</button> </h2></div>
+                    <p class="selectedInfo"> ${confirmedClass} <br> <p/>
+             </div>
+         </div>
+      </div>
+
+      <div class="background-selection">
+      <table>
+  <thead>
+    <tr>
+      <th scope="col">Background</th>
+      <th scope="col">Description</th>
+      <th scope="col">Bonus</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Royal</th>
+      <td>You have royal blood</td>
+      <td>HP +20</td>
+    </tr>
+    <tr>
+      <th scope="row">Vampire</th>
+      <td>Seeking humanoid blood</td>
+      <td>Lifesteal +1</td>
+    </tr>
+    <tr>
+    <tr>
+      <th scope="row">Army</th>
+      <td>Being in the kingdoms army</td>
+      <td>Stamina +10</td>
+    </tr>
+      <th scope="row">Bandit</th>
+      <td>thieving life</td>
+      <td>Speed +10 </td>
+    </tr>
+    <tr>
+      <th scope="row">Farmer</th>
+      <td>working hard everyday</td>
+      <td>Strenght +10</td>
+    </tr>
+        <tr>
+      <th scope="row">Hunter</th>
+      <td>Mostly in the woods hunting</td>
+      <td>Accuracy +10</td>
+    </tr>
+  </tbody>
+</table>
+
+      </div
+
+
+
+    
+
     </div>
 
 
 </div>
-
-<%- include('./partials/scripts.ejs') %>
-<script src="/js/characterCreation.js"></script>
-</body>
-</html>
 
 <%- include('./partials/scripts.ejs') %>
 <script src="/js/characterCreation.js"></script>
