@@ -85,6 +85,10 @@ body {
   font-size: 1em;
 }
 
+#playerName {
+  color:#ffffff;
+}
+
 #submitName {
   padding: 10px 20px;
   font-size: 1em;
