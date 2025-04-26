@@ -1,10 +1,17 @@
+let playerName = ''; // Declare playerName in the global scope
+let selectedImageSrc = ''; // Variable to store the selected image source
+
 document.addEventListener('DOMContentLoaded', function() {
     const classButtons = document.querySelectorAll('.class-button');
     const classHeader = document.querySelector('.selectedInfo');
     const classConfirmButton = document.getElementById('class-confirm');
     const classSelectionDiv = document.getElementById('classSelection');
     const classBackgroundDiv = document.getElementById('classChooseBackground');
-    const classBackgroundInfo = classBackgroundDiv.querySelector('.selectedInfo'); // Target the selectedInfo in the background div
+    const classBackgroundInfo = classBackgroundDiv.querySelector('.selectedInfo');
+    const classShowcaseDiv = document.querySelector('.class-Showcase');
+    const playerNameDisplayShowcase = classShowcaseDiv ? classShowcaseDiv.querySelector('#playerName') : null;
+    const classInfoDisplayShowcase = classShowcaseDiv ? classShowcaseDiv.querySelector('.selectedInfo') : null;
+    const selectedClassImageElementShowcase = classShowcaseDiv ? classShowcaseDiv.querySelector('#selectedClassImage') : null; // Target the image in the showcase
 
     const classInfo = {
         knight: {
@@ -31,9 +38,9 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     let activeClassButton = null;
-    let selectedClassOnly = null; // To store just the class name
+    let selectedClassOnly = null;
     let selectedGender = null;
-    let selectedCharacterClass = null; // Variable to store the formatted class
+    let selectedCharacterClass = null;
 
     classButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -46,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
             selectedClassOnly = this.dataset.class;
             selectedGender = this.dataset.gender;
             selectedCharacterClass = `${selectedGender} ${selectedClassOnly}`;
+            selectedImageSrc = this.src; // Store the image source
 
             if (classInfo[selectedClassOnly]) {
                 let infoText = `${selectedGender === 'male' ? 'Male' : 'Female'} ${classInfo[selectedClassOnly].name}`;
@@ -56,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 classHeader.textContent = "Choose your class";
             }
 
-            console.log(`Class ${selectedClassOnly} (${selectedGender}) selected.`);
+            console.log(`Class ${selectedClassOnly} (${selectedGender}) selected, Image Source: ${selectedImageSrc}`);
             // You can add further logic here
         });
     });
@@ -65,23 +73,41 @@ document.addEventListener('DOMContentLoaded', function() {
         if (selectedCharacterClass) {
             classSelectionDiv.classList.add('hidden');
             classBackgroundDiv.classList.remove('hidden');
-            classBackgroundInfo.innerHTML = `${selectedCharacterClass} <br>`; // Display the formatted class
-            console.log(`Confirmed class: ${selectedCharacterClass}`);
-            // Potentially add more details to display about the class in the background section
+            classBackgroundInfo.innerHTML = `${selectedCharacterClass} <br>`;
+
+            if (playerNameDisplayShowcase) {
+                playerNameDisplayShowcase.textContent = playerName;
+            } else {
+                console.error("Error: Could not find #playerName element within .class-Showcase");
+            }
+
+            if (classInfoDisplayShowcase) {
+                classInfoDisplayShowcase.textContent = selectedCharacterClass;
+            } else {
+                console.error("Error: Could not find .selectedInfo element within .class-Showcase");
+            }
+
+            // Set the image source in the showcase
+            if (selectedClassImageElementShowcase && selectedImageSrc) {
+                selectedClassImageElementShowcase.src = selectedImageSrc;
+                selectedClassImageElementShowcase.alt = selectedCharacterClass; // Set alt text
+            } else {
+                console.error("Error: Could not find #selectedClassImage element in .class-Showcase or image source is missing.");
+            }
+
+            console.log(`Confirmed class: ${selectedCharacterClass}, Player Name: ${playerName}`);
         } else {
             alert('Please select a class before continuing.');
         }
     });
 });
 
-//Intro
 document.addEventListener('DOMContentLoaded', () => {
     const introSelection = document.getElementById('introSelection');
     const classSelection = document.getElementById('classSelection');
-    const playerNameDisplay = document.getElementById('playerName'); // Get the playerName div
-    const classBackgroundDiv = document.getElementById('classChooseBackground'); // Get the background div
-    const classBackgroundBackButton = document.getElementById('class-background-back'); // Get the back button in background selection
-
+    const playerNameDisplayHeader = document.getElementById('playerNameHeader'); // Target the header's playerName
+    const classBackgroundDiv = document.getElementById('classChooseBackground');
+    const classBackgroundBackButton = document.getElementById('class-background-back');
     const nextButton1 = document.getElementById('nextIntro');
     const nextButton2 = document.getElementById('nextIntro2');
     const nextButton3 = document.getElementById('nextIntro3');
@@ -90,9 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitNameButton = document.getElementById('submitName');
     const dialogueElements = document.querySelectorAll('#introSelection .dialogue');
 
-    let playerName = '';
     let currentIntroStep = 0;
-
     for (let i = 1; i < dialogueElements.length; i++) {
         dialogueElements[i].classList.add('hidden');
     }
@@ -101,8 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     nameInput.classList.add('hidden');
     submitNameButton.classList.add('hidden');
     classSelection.classList.add('hidden');
-    classBackgroundDiv.classList.add('hidden'); // Initially hide the background div
-    playerNameDisplay.classList.add('hidden'); // Initially hide the playerName display
+    classBackgroundDiv.classList.add('hidden');
 
     nextButton1.addEventListener('click', () => {
         dialogueElements[currentIntroStep].classList.add('hidden');
@@ -130,12 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     submitNameButton.addEventListener('click', () => {
-        playerName = nameInput.value.trim();
+        playerName = nameInput.value.trim(); // Update the globally scoped playerName
         if (playerName) {
             introSelection.classList.add('hidden');
             classSelection.classList.remove('hidden');
-            playerNameDisplay.textContent = playerName; // Set the text content of the div
-            playerNameDisplay.classList.remove('hidden'); // Show the playerName display
+            if (playerNameDisplayHeader) {
+                playerNameDisplayHeader.textContent = playerName;
+            }
         } else {
             alert('Please enter your name.');
         }
@@ -143,7 +167,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     classBackButton.addEventListener('click', () => {
         classSelection.classList.add('hidden');
-        playerNameDisplay.classList.add('hidden'); // Hide the playerName display when going back
+        const playerNameDisplayHeader = document.getElementById('playerNameHeader');
+        if (playerNameDisplayHeader) {
+            playerNameDisplayHeader.textContent = ''; // Clear the name when going back
+        }
         introSelection.classList.remove('hidden');
 
         dialogueElements.forEach((element, index) => {
@@ -160,7 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
         currentIntroStep = 3;
     });
 
-    // Back button for the background selection
     classBackgroundBackButton.addEventListener('click', () => {
         classBackgroundDiv.classList.add('hidden');
         classSelection.classList.remove('hidden');
