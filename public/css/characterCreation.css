@@ -83,6 +83,9 @@ body {
   padding: 8px;
   margin-bottom: 10px;
   font-size: 1em;
+  background-color: rgba(0, 0, 0, 0.582); /* Darker, semi-transparent background */
+  color: #ddd;
+
 }
 
 #playerName {
@@ -95,13 +98,12 @@ body {
   cursor: pointer;
 }
 
-/* ----------- CLASS SELECTION STYLES WITH SIDEBAR ----------- */
+/* ----------- CLASS SELECTION ----------- */
 #classSelection {
   display: flex; /* Enable flexbox for the class selection area */
-  /* Remove the flex-direction, align-items, and justify-content that centered content */
-  /* flex-direction: column; */
-  /* align-items: center; */
-  /* justify-content: center; */
+  background-image: url('/images/throneroom3.png');
+  background-size: cover;
+  background-repeat: no-repeat;
   text-align: left; /* Align text to the left within the main content */
 }
 
@@ -129,9 +131,9 @@ h2.class-header {
   flex-direction: column; /* Stack items vertically */
   align-items: center; /* Center items horizontally */
   justify-content: flex-start; /* Align items to the top */
-  width: 80%; /* Adjust width as needed within the main content */
+  width: 56%; /* Adjust width as needed within the main content */
   min-height: 100px;
-  background-color: rgba(0, 0, 0, 0.8); /* Darker, semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.582); /* Darker, semi-transparent background */
   border: 2px solid #ffffff; /* Solid, dark grey border */
   border-radius: 0; /* Sharp, square corners */
   font-family: 'Georgia', serif; /* A classic serif font */
@@ -178,16 +180,17 @@ h2.class-header {
 .image-wrapper img {
   height: 500px; /* Adjust the height of your class images */
   width: auto; /* Maintain aspect ratio */
-  margin-bottom: 5px;
+ /* margin-bottom: 5px; */
   display: block; /* Prevent inline spacing issues */
   margin-left: auto;
   margin-right: auto;
+  border: 3px solid #000000; /* Solid, dark grey border */
+  border-radius: 0; /* Sharp, square corners */
 }
 
 .image-button {
   cursor: pointer;
   border: 2px solid transparent;
-  padding: 5px;
   transition: box-shadow 3s ease-in-out;
 }
 
@@ -195,7 +198,6 @@ h2.class-header {
   border-color: rgb(255, 255, 255);
   border-width: 2px;
   border-style: solid;
-  padding: 0px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* Add a yellow glow */
 }
 
@@ -204,7 +206,15 @@ h2.class-header {
   font-family: 'Georgia', serif; /* A classic serif font */
   text-transform: uppercase; /* Adds a formal touch */
   letter-spacing: 0.08em; /* Subtle letter spacing */
+  background-color: #000000;
+
+  padding-top: 1em; /* Reduced top padding */
+  padding-bottom: 1em; /* Reduced bottom padding */
+  display: block; /* Ensures it takes up the full width */
+  line-height: 1; /* Set line-height to 1 to minimize extra space */
+  margin-bottom: 0; /* Remove any default bottom margin */
 }
+
 
 /* You might need to adjust existing styles for .image-wrapper and .image-wrapper img 
    if they are causing layout issues with the fixed sidebar. */
