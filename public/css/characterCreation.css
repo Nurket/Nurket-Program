@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  background-color: var(--background-color) !important; /* Force the background color */
+  background-color: var(--background-color) !important;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -25,6 +25,11 @@ body {
   padding: 0;
   min-height: 100vh;
   background-position: center;
+  /* Remove or adjust flex properties if they are causing issues elsewhere */
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
 }
 
 #startMenue button {
@@ -305,4 +310,57 @@ h2.class-header {
     width: 100%; /* Take full width on smaller screens */
     margin-bottom: 20px; /* Add spacing between stacked items */
   }
+}
+
+
+/**/
+
+#classChooseBackground {
+  display: flex; /* Enable flexbox */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: flex-start; /* Align items to the top */
+  min-height: 100vh; /* Ensure it takes at least the full viewport height */
+  /* You might need to adjust background or other styles for this section */
+  padding-top: 20px; /* Optional: Add some padding from the top */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+
+/* If you want to further center the content within .class-background-main inside #classChooseBackground */
+.class-background-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally within this container */
+  /* You can set a max-width here if you want the content to have a specific width and be centered */
+  /* max-width: 960px; */
+  width: 100%; /* Or a specific percentage */
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
+  /* Remove any top/bottom margins that might interfere with vertical centering */
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Adjust the background-selection to not interfere with centering */
+.background-selection {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; /* Keep items aligned to the top within this row */
+  gap: 20px;
+  /* Optionally, center the background-selection itself if needed */
+  /* justify-content: center; */
+  width: 80%; /* Or your desired width */
+  max-width: 1200px; /* Optional maximum width */
+}
+
+/* You might need to adjust the tables-container and class-Showcase widths as well */
+.tables-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* flex-basis: auto; */
+}
+
+.class-Showcase {
+  /* flex-basis: auto; */
 }
