@@ -84,121 +84,26 @@
       </div>
 
       <div class="background-selection">
-      
-      <div class="history-selection">
-      <table>
-  <thead>
-     <th scope="col">Choose one history</th>
-    <tr>
-      <th scope="col">History</th>
-      <th scope="col">Description</th>
-      <th scope="col">Bonus</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Royal</th>
-      <td>You have royal blood</td>
-      <td>HP +20</td>
-    </tr>
-    <tr>
-      <th scope="row">Vampire</th>
-      <td>Seeking humanoid blood</td>
-      <td>Lifesteal +1</td>
-    </tr>
-    <tr>
-    <tr>
-      <th scope="row">Army</th>
-      <td>Being in the kingdoms army</td>
-      <td>Stamina +10</td>
-    </tr>
-      <th scope="row">Bandit</th>
-      <td>thieving life</td>
-      <td>Speed +10 </td>
-    </tr>
-    <tr>
-      <th scope="row">Farmer</th>
-      <td>working hard everyday</td>
-      <td>Strenght +10</td>
-    </tr>
-        <tr>
-      <th scope="row">Hunter</th>
-      <td>Mostly in the woods hunting</td>
-      <td>Accuracy +10</td>
-    </tr>
-
-    <tr>
-      <th scope="row">Magician</th>
-      <td>Learning magic</td>
-      <td>Magic +10</td>
-    </tr>
-  </tbody>
-  </div>
-</table>
-
-
-  <div class="trait-selection">
-      <table>
-  <thead>
-  <th scope="col">Choose two traits</th>
-    <tr>
-      <th scope="col">Traits</th>
-      <th scope="col">Description</th>
-      <th scope="col">Bonus</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Great with swords</th>
-      <td>You have royal blood</td>
-      <td>HP +20</td>
-    </tr>
-    <tr>
-      <th scope="row">Vampire</th>
-      <td>Seeking humanoid blood</td>
-      <td>Lifesteal +1</td>
-    </tr>
-    <tr>
-    <tr>
-      <th scope="row">Army</th>
-      <td>Being in the kingdoms army</td>
-      <td>Stamina +10</td>
-    </tr>
-      <th scope="row">Bandit</th>
-      <td>thieving life</td>
-      <td>Speed +10 </td>
-    </tr>
-    <tr>
-      <th scope="row">Farmer</th>
-      <td>working hard everyday</td>
-      <td>Strenght +10</td>
-    </tr>
-        <tr>
-      <th scope="row">Hunter</th>
-      <td>Mostly in the woods hunting</td>
-      <td>Accuracy +10</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-          <div class="class-Showcase">
-    <div class="image-wrapper">
-        <div id="playerName"></div>
-        <p class="selectedInfo"></p>
-        <img id="selectedClassImage" src="" alt="Selected Class">
-    </div>
-</div>
-
-
-
+  <div class="tables-container">
+    <div class="history-selection">
       </div>
+    <div class="trait-selection">
+      </div>
+  </div>
+  <div class="class-Showcase">
+    <div class="image-wrapper">
+      <div id="playerName"></div>
+      <p class="selectedInfo"></p>
+      <img id="selectedClassImage" src="" alt="Selected Class">
+    </div>
+  </div>
+</div>
 
 
 </div>
 
 <%- include('./partials/scripts.ejs') %>
 <script src="/js/characterCreation.js"></script>
+<script src="/js/selectingBackground.js"></script>
 </body>
 </html>
