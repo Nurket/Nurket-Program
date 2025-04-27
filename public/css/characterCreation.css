@@ -250,22 +250,25 @@ h2.class-header {
   width: 100%; /* Adjust as needed */
   border-collapse: collapse; /* Collapse borders to avoid double lines */
   margin-bottom: 1em; /* Add some spacing below the table */
-  background-color: #f0f0f0; /* Light background for header */
+  background-color: #000000; /* Light background for header */
+  color:rgb(255, 255, 255);
+  border: 2px solid rgb(214, 214, 214); /* Adjust border style and color as needed */
 }
 
 .history-selection th,
 .history-selection td,
 .trait-selection th,
 .trait-selection td {
-  border: 1px solid #ccc; /* Light gray border for cells */
+  border: 1px solid #000000; /* Light gray border for cells */
   padding: 0.5em; /* Add some padding inside cells for readability */
   text-align: left; /* Align text within cells */
 }
 
 .history-selection thead th,
 .trait-selection thead th {
-  background-color: #f0f0f0; /* Light background for header */
+  background-color: #000000; /* Light background for header */
   font-weight: bold; /* Make header text bold */
+  border: 2px solid rgba(255, 255, 255, 0.801); /* Adjust border style and color as needed */
 }
 
 
@@ -273,7 +276,7 @@ h2.class-header {
 /* Optional: Hover effect on table rows */
 .history-selection tbody tr:hover,
 .trait-selection tbody tr:hover {
-  background-color: #e0e0e0;
+  background-color: #6b6b6b;
   cursor: pointer; /* Indicate that rows are clickable */
 }
 
