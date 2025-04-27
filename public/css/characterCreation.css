@@ -231,6 +231,13 @@ h2.class-header {
 
 /* choose Background */
 
+#classChooseBackground {
+  display: flex; /* Enable flexbox for the class selection area */
+  background-image: url('/images/throneroom3.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: left; /* Align text to the left within the main content */
+}
 
 .history-selection table tbody tr.selected,
 .trait-selection table tbody tr.selected {
