@@ -207,7 +207,7 @@ h2.class-header {
   text-transform: uppercase; /* Adds a formal touch */
   letter-spacing: 0.08em; /* Subtle letter spacing */
   background-color: #000000;
-  border: 1px solid #ffffff9d; /* Solid, dark grey border */
+  border: 1px solid #ffffff; /* Solid, dark grey border */
   border-radius: 0; /* Sharp, square corners */
   padding-top: 1em; /* Reduced top padding */
   padding-bottom: 1em; /* Reduced bottom padding */
@@ -219,3 +219,90 @@ h2.class-header {
 
 /* You might need to adjust existing styles for .image-wrapper and .image-wrapper img 
    if they are causing layout issues with the fixed sidebar. */
+
+
+
+
+
+/* choose Background */
+
+
+.history-selection table tbody tr.selected,
+.trait-selection table tbody tr.selected {
+  border: 2px solid rgb(255, 255, 255); /* Adjust border style and color as needed */
+}
+
+
+.history-selection table,
+.trait-selection table {
+  width: 100%; /* Adjust as needed */
+  border-collapse: collapse; /* Collapse borders to avoid double lines */
+  margin-bottom: 1em; /* Add some spacing below the table */
+  background-color: #f0f0f0; /* Light background for header */
+}
+
+.history-selection th,
+.history-selection td,
+.trait-selection th,
+.trait-selection td {
+  border: 1px solid #ccc; /* Light gray border for cells */
+  padding: 0.5em; /* Add some padding inside cells for readability */
+  text-align: left; /* Align text within cells */
+}
+
+.history-selection thead th,
+.trait-selection thead th {
+  background-color: #f0f0f0; /* Light background for header */
+  font-weight: bold; /* Make header text bold */
+}
+
+
+
+/* Optional: Hover effect on table rows */
+.history-selection tbody tr:hover,
+.trait-selection tbody tr:hover {
+  background-color: #e0e0e0;
+  cursor: pointer; /* Indicate that rows are clickable */
+}
+
+
+
+/* style */
+.background-selection {
+  display: flex; /* Enable flexbox for the background selection container */
+  flex-direction: row; /* Arrange items horizontally */
+  align-items: flex-start; /* Align items to the top */
+  gap: 20px; /* Adjust the spacing between the tables container and the showcase */
+}
+
+.tables-container {
+  display: flex; /* Enable flexbox for the tables container */
+  flex-direction: column; /* Stack the tables vertically */
+  gap: 10px; /* Adjust the spacing between the two tables */
+  /* Optional: Control the width of the tables container */
+  /* flex-basis: auto; /* Let it take the necessary width */
+}
+
+.history-selection,
+.trait-selection {
+  /* You can still apply specific widths or other styles to the individual tables if needed */
+  /* width: 100%; /* Make them take the full width of their container */
+}
+
+.class-Showcase {
+  /* Optional: Control the width of the showcase */
+  /* flex-basis: auto; */
+}
+
+/* Optional: Responsive adjustments */
+@media (max-width: 768px) {
+  .background-selection {
+    flex-direction: column; /* Stack everything vertically on smaller screens */
+  }
+
+  .tables-container,
+  .class-Showcase {
+    width: 100%; /* Take full width on smaller screens */
+    margin-bottom: 20px; /* Add spacing between stacked items */
+  }
+}
