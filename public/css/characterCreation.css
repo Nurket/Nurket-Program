@@ -374,3 +374,58 @@ h2.class-header {
 .class-Showcase {
   /* flex-basis: auto; */
 }
+
+
+
+
+
+
+/* weapon and armor table*/
+
+.weapon-armor-container {
+  width: 100%; /* Make the container take full width */
+  margin-top: 20px; /* Add spacing above it */
+}
+
+.weapon-selection,
+.armor-selection {
+  /* You can add specific styles for these if needed */
+  margin-bottom: 10px; /* Add spacing between them if they stack within this container */
+}
+
+.weapon-table tbody tr.selected,
+  .armor-table tbody tr.selected {
+    border: 2px solid rgb(255, 255, 255);
+  }
+
+  .weapon-table,
+  .armor-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em; /* Add space *below* each table */
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(214, 214, 214);
+  }
+
+  .weapon-table th,
+  .weapon-table td,
+  .armor-table th,
+  .armor-table td {
+    border: 1px solid #000000;
+    padding: 0.5em;
+    text-align: left;
+  }
+
+  .weapon-table thead th,
+  .armor-table thead th {
+    background-color: #000000;
+    font-weight: bold;
+    border: 2px solid rgba(255, 255, 255, 0.801);
+  }
+
+  .weapon-table tbody tr:hover,
+  .armor-table tbody tr:hover {
+    background-color: #6b6b6b;
+    cursor: pointer;
+  }

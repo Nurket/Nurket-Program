@@ -1,3 +1,92 @@
+function createStyledTableWithHeader(data, containerSelector, tableClass, selectionLimit = 1, headerText = '') {
+  const containerDiv = document.querySelector(containerSelector);
+  if (!containerDiv) {
+    console.error(`Error: Element with selector '${containerSelector}' not found in the DOM.`);
+    return;
+  }
+
+  const table = document.createElement('table');
+  table.className = tableClass;
+  const thead = document.createElement('thead');
+  const tbody = document.createElement('tbody');
+
+  // Create table header row for selection information
+  const selectionHeaderRow = document.createElement('tr');
+  const selectionHeaderCell = document.createElement('th');
+  selectionHeaderCell.textContent = headerText || `Select up to ${selectionLimit} item(s)`;
+  // Make the header span all columns
+  if (data.length > 0) {
+    selectionHeaderCell.colSpan = Object.keys(data[0]).length;
+  }
+  selectionHeaderRow.appendChild(selectionHeaderCell);
+  thead.appendChild(selectionHeaderRow);
+
+  // Create the regular table headers
+  if (data.length > 0) {
+    const headerRow = document.createElement('tr');
+    for (const key in data[0]) {
+      const th = document.createElement('th');
+      th.textContent = key.charAt(0).toUpperCase() + key.slice(1);
+      headerRow.appendChild(th);
+    }
+    thead.appendChild(headerRow);
+  }
+
+  data.forEach(item => {
+    const row = document.createElement('tr');
+    for (const key in item) {
+      const td = document.createElement('td');
+      td.textContent = item[key];
+      row.appendChild(td);
+    }
+    tbody.appendChild(row);
+  });
+
+  table.appendChild(thead);
+  table.appendChild(tbody);
+  containerDiv.appendChild(table);
+
+  // Add a row click handler to enforce selection limit and update header
+  const selectedRowsData = []; // Array to store data of selected rows
+  const headerCell = thead.querySelector('th'); // Get the selection header cell
+
+  tbody.querySelectorAll('tr').forEach(row => {
+    row.addEventListener('click', function() {
+      const isSelected = this.classList.contains('selected');
+      const traitName = this.cells[0].textContent; // Assuming 'Trait' is the first column
+
+      if (tableClass === 'trait-table') {
+        if (isSelected) {
+          this.classList.remove('selected');
+          const indexToRemove = selectedRowsData.indexOf(traitName);
+          if (indexToRemove > -1) {
+            selectedRowsData.splice(indexToRemove, 1);
+          }
+        } else if (selectedRowsData.length < selectionLimit) {
+          this.classList.add('selected');
+          selectedRowsData.push(traitName);
+        } else {
+          alert(`Select ${selectionLimit} traits.`);
+          return; // Prevent adding the 'selected' class if limit reached
+        }
+        headerCell.textContent = selectedRowsData.length > 0
+          ? `Selected Traits: ${selectedRowsData.join(', ')}`
+          : headerText || `Select ${selectionLimit} Traits`;
+      } else if (tableClass === 'history-table') {
+        tbody.querySelectorAll('tr.selected').forEach(r => r.classList.remove('selected'));
+        this.classList.add('selected');
+        headerCell.textContent = `Selected History: ${traitName}`;
+      }
+
+      console.log(`Selected items in ${tableClass}:`, selectedRowsData); // For debugging
+    });
+  });
+
+  // Set initial header text
+  headerCell.textContent = headerText || (selectionLimit === 1 ? 'Select one item' : `Select ${selectionLimit} items`);
+}
+
+// Example usage:
 const historyData = [
   { History: "Royal", Description: "You have royal blood", Bonus: "HP +20" },
   { History: "Vampire", Description: "Seeking humanoid blood", Bonus: "Lifesteal +1" },
@@ -17,77 +106,116 @@ const traitData = [
   { Trait: "Brave", Description: "Unafraid of danger", Bonus: "Willpower +5" },
 ];
 
-// adding the table
-function renderTable(data, containerClass, selectionLimit) {
-  const container = document.querySelector(`.${containerClass}`);
+// Call the function for the history table
+createStyledTableWithHeader(historyData, '.history-selection', 'history-table', 1, 'Select your History');
+
+// Call the function for the trait table
+createStyledTableWithHeader(traitData, '.trait-selection', 'trait-table', 2, 'Select 2 Traits');
+
+
+
+
+
+/* armor table ------------------------------------------------------------------------------------------------------------------*/
+function createStyledTable(data, containerSelector, tableClass, selectionLimit = 1) {
+  const containerDiv = document.querySelector(containerSelector);
+  if (!containerDiv) {
+    console.error(`Error: Element with selector '${containerSelector}' not found in the DOM.`);
+    return;
+  }
+
   const table = document.createElement('table');
+  table.className = tableClass;
   const thead = document.createElement('thead');
   const tbody = document.createElement('tbody');
-  const headers = Object.keys(data[0]); // Get headers from the first object
 
-  // Create table header
-  const headerRow = document.createElement('tr');
-  headers.forEach(headerText => {
-    const th = document.createElement('th');
-    th.textContent = headerText;
-    headerRow.appendChild(th);
-  });
-  thead.appendChild(headerRow);
-  table.appendChild(thead);
+  // Create table header row for selection information
+  const selectionHeaderRow = document.createElement('tr');
+  const selectionHeaderCell = document.createElement('th');
+  selectionHeaderCell.textContent = `You need to select (${selectionLimit})`;
+  // Make the header span all columns
+  if (data.length > 0) {
+    selectionHeaderCell.colSpan = Object.keys(data[0]).length;
+  }
+  selectionHeaderRow.appendChild(selectionHeaderCell);
+  thead.appendChild(selectionHeaderRow);
 
-  // Create table body
-  data.forEach(rowData => {
-    const tr = document.createElement('tr');
-    for (const key in rowData) {
-      const td = document.createElement('td');
-      td.textContent = rowData[key];
-      tr.appendChild(td);
+  // Create the regular table headers
+  if (data.length > 0) {
+    const headerRow = document.createElement('tr');
+    for (const key in data[0]) {
+      const th = document.createElement('th');
+      th.textContent = key.charAt(0).toUpperCase() + key.slice(1);
+      headerRow.appendChild(th);
     }
-    tbody.appendChild(tr);
+    thead.appendChild(headerRow);
+  }
+
+  data.forEach(item => {
+    const row = document.createElement('tr');
+    for (const key in item) {
+      const td = document.createElement('td');
+      td.textContent = item[key];
+      row.appendChild(td);
+    }
+    tbody.appendChild(row);
   });
+
+  table.appendChild(thead);
   table.appendChild(tbody);
-  container.appendChild(table);
+  containerDiv.appendChild(table);
 
-  // Add event listeners for row selection
-  addSelectionListeners(table, selectionLimit, containerClass); // Pass containerClass here
-}
+  // Add a row click handler to enforce single selection and update header
+  let selectedRow = null; // Keep track of the selected row for the current table
+  const headerCell = thead.querySelector('th'); // Get the selection header cell
 
-// Call the renderTable function for both history and traits
-renderTable(historyData, 'history-selection', 1);
-// Assuming you create a <div class="trait-selection"> in your HTML
-renderTable(traitData, 'trait-selection', 2);
+  tbody.querySelectorAll('tr').forEach(row => {
+    row.addEventListener('click', function() {
+      const tableBody = this.closest('tbody'); // Get the tbody this row belongs to
+      const previouslySelected = tableBody.querySelector('.selected'); // Find any previously selected row in this table
 
-// selecting row
-function addSelectionListeners(table, selectionLimit, containerClass) { // Accept containerClass as a parameter
-  const tbody = table.querySelector('tbody');
-  let selectedRows = [];
+      if (previouslySelected) {
+        previouslySelected.classList.remove('selected'); // Remove from the previous row
+      }
+      this.classList.add('selected'); // Add to the clicked row
+      selectedRow = this; // Update the selected row for this table
 
-  tbody.addEventListener('click', function(event) {
-    const clickedRow = event.target.parentNode; // Get the parent <tr> element
-
-    if (clickedRow.tagName === 'TR') {
-      const isSelected = clickedRow.classList.contains('selected');
-
-      if (containerClass === 'history-selection') {
-        // For history, allow only one selection
-        tbody.querySelectorAll('tr.selected').forEach(row => row.classList.remove('selected'));
-        clickedRow.classList.add('selected');
-        selectedRows = [clickedRow];
-      } else if (containerClass === 'trait-selection') {
-        // For traits, allow up to two selections
-        if (isSelected) {
-          clickedRow.classList.remove('selected');
-          selectedRows = selectedRows.filter(row => row !== clickedRow);
-        } else if (selectedRows.length < selectionLimit) {
-          clickedRow.classList.add('selected');
-          selectedRows.push(clickedRow);
-        } else {
-          alert(`You can select up to ${selectionLimit} traits.`);
-        }
+      // Update the header text based on the selected row and table
+      if (tableClass === 'weapon-table' && this.cells.length >= 2) {
+        const weaponName = this.cells[0].textContent;
+        const weaponType = this.cells[1].textContent;
+        headerCell.textContent = `Selected Weapon: ${weaponName} (${weaponType})`;
+      } else if (tableClass === 'armor-table' && this.cells.length >= 2) {
+        const armorName = this.cells[0].textContent;
+        const armorType = this.cells[1].textContent;
+        headerCell.textContent = `Selected Armor: ${armorName} (${armorType})`;
+      } else {
+        headerCell.textContent = `You have selected an item`; // Default message if data structure is unexpected
       }
 
-      console.log('Selected Rows:', selectedRows.map(row => row.textContent.trim()));
-      // You can now access the data from the selected rows
-    }
+      console.log(`Selected item in ${tableClass}:`, this.rowIndex); // For debugging
+    });
   });
+
+  // Set initial header text
+  const initialHeaderText = selectionLimit === 1 ? 'Select one item' : `Select up to ${selectionLimit} items`;
+  headerCell.textContent = initialHeaderText;
 }
+
+// Example usage:
+const weaponData = [
+  { weapon: 'Sword', type: 'Melee', damage: 10 },
+  { weapon: 'Bow', type: 'Ranged', damage: 8 },
+  { weapon: 'Staff', type: 'Magic', damage: 12 },
+  { weapon: 'Dagger', type: 'Melee', damage: 7 }
+];
+
+const armorData = [
+  { armor: 'Warrior armor', type: 'heavy', defense: 5 },
+  { armor: 'Hunter leather', type: 'medium', defense: 15 },
+  { armor: 'Wizard clothes', type: 'light', defense: 10 },
+];
+
+// Call the function for each table, specifying the selection limit as 1
+createStyledTable(weaponData, '.weapon-selection', 'weapon-table', 1);
+createStyledTable(armorData, '.armor-selection', 'armor-table', 1);
