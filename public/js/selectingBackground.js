@@ -184,7 +184,7 @@ function createStyledTable(data, containerSelector, tableClass, selectionLimit =
       if (tableClass === 'weapon-table' && this.cells.length >= 2) {
         const weaponName = this.cells[0].textContent;
         const weaponType = this.cells[1].textContent;
-        headerCell.textContent = `Selected Weapon: ${weaponName} (${weaponType})`;
+        headerCell.textContent = `Selected Starting Weapon: ${weaponName} (${weaponType})`;
       } else if (tableClass === 'armor-table' && this.cells.length >= 2) {
         const armorName = this.cells[0].textContent;
         const armorType = this.cells[1].textContent;
@@ -211,9 +211,9 @@ const weaponData = [
 ];
 
 const armorData = [
-  { armor: 'Warrior armor', type: 'heavy', defense: 5 },
-  { armor: 'Hunter leather', type: 'medium', defense: 15 },
-  { armor: 'Wizard clothes', type: 'light', defense: 10 },
+  { armor: 'Warrior armor', type: 'heavy', defense: 5, weight: 75 },
+  { armor: 'Hunter leather', type: 'medium', defense: 15, weight: 50 },
+  { armor: 'Wizard clothes', type: 'light', defense: 10, weight: 25 },
 ];
 
 // Call the function for each table, specifying the selection limit as 1
