@@ -250,9 +250,9 @@ h2.class-header {
   width: 100%; /* Adjust as needed */
   border-collapse: collapse; /* Collapse borders to avoid double lines */
   margin-bottom: 1em; /* Add some spacing below the table */
-  background-color: #000000; /* Light background for header */
+  background-color: #414141; /* Light background for header */
   color:rgb(255, 255, 255);
-  border: 2px solid rgb(214, 214, 214); /* Adjust border style and color as needed */
+  border: 2px solid rgb(0, 0, 0); /* Adjust border style and color as needed */
 }
 
 .history-selection th,
@@ -403,9 +403,9 @@ h2.class-header {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 1em; /* Add space *below* each table */
-    background-color: #000000;
+    background-color: #383838;
     color: rgb(255, 255, 255);
-    border: 2px solid rgb(214, 214, 214);
+    border: 2px solid rgb(0, 0, 0);
   }
 
   .weapon-table th,

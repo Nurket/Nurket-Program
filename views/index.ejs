@@ -10,21 +10,10 @@
   <div id="startMenue">
     <img src="/images/kof.png">
     <button onclick="window.location.href='/characterCreation'">New game</button>
-    <button>Load game</button>
-    <button>Settings</button>
-    <button id="gameInfoButton">Game info</button>
-  </div>
+    <button>Saves</button>
+    <button>Game Info </button>
 
-  <div id="infoBoxContainer">
-    <div id="infoBox">
-      <button id="closeButton">Go back</button>
-      <p>Thank you for playing</p>
-      <p>Game is developed by Tom Olsen</p>
-      <p>Music and sound effects is made by ???</p>
-    </div>
-  </div>
-
-  <div id="watermark">Made By Tom Olsen / Music by ???
+  <div id="watermark">Developed By Tom Olsen / Music by ???
     <div id="audioPlayer">
       <i id="audioIcon" class="bi-volume-down-fill" style="cursor: pointer; font-size: 32px;"></i>
       <audio id="backgroundMusic" loop autoplay style="display: none;">
@@ -32,8 +21,13 @@
       </audio>
     </div>
   </div>
+  </div>
 
-  <div id="snow-container"></div> <!- The container for the snow effect -->
+
+
+
+
+
 
   <%- include('./partials/scripts.ejs') %>
   <script src="/js/index.js"></script>
