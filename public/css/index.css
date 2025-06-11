@@ -1,74 +1,48 @@
 @import '/bootstrap-icons/font/bootstrap-icons.css';
 
-.bi-volume-down-fill {
-  color: white; /* Change 'white' to your desired color */
+
+/* Existing CSS for #contentContainer, etc. */
+
+/* Base styles for all main application sections */
+.app-section {
+    width: 100%;
+    /* Use min-height 100vh if content can be shorter than screen, */
+    /* or height: 100vh if you want exact screen height */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Allows sections to stack and easy hiding */
+    top: 0;
+    left: 0;
+    box-sizing: border-box; /* Include padding in dimensions */
 }
 
-.bi-volume-mute-fill {
-  color: white; /* Change 'white' to your desired color */
+/* Class to hide a section */
+.hidden {
+    display: none !important; /* !important ensures this overrides other display properties */
 }
 
-html, body {
-  background-image: url('/images/animated_castle_deep_snow.gif');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* Keep the background fixed */
-  margin: 0;
-  height: 100vh; /* Set a fixed height for the viewport */
-  overflow: hidden; /* Prevent scrolling of the body */
-  background-position: center;
-  background-color: black;
-}
-#startMenue {
-  width: 400px; /* Keep the width matching the image */
-  padding: 10px; /* Keep the adjusted padding */
-  color: rgb(235, 211, 0);
-  position: absolute;
-  left: 50%; /* Shift the left edge to the horizontal center */
-  top: 25%; /* Shift the top edge to the vertical center */
-  transform: translate(-50%, -50%); /* Move back half of the element's width and height */
-  display: flex; /* Enable Flexbox for direct children */
-  flex-direction: column; /* Stack children vertically */
-  align-items: center; /* Center children horizontally along the cross-axis */
+/* Optional: Styling for menu buttons */
+#main-menu-section button, #back-to-menu-btn {
+    display: block; /* Make them stack vertically */
+    width: 250px;
+    padding: 15px;
+    margin: 15px auto; /* Center them */
+    font-size: 1.2em;
+    background-color: #4CAF50; /* Example color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-#startMenue img {
-  max-width: 100%; /* Ensure it fits within the container */
-  height: auto;
-  width: auto; /* Let it adjust based on max-width */
-  margin-bottom: 10px; /* Add some space between the image and button */
+#main-menu-section button:hover, #back-to-menu-btn:hover {
+    background-color: #45a049;
 }
 
-#startMenue button {
-  padding: 12px 25px; /* Slightly more padding */
-  font-size: 1.1em;
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.8); /* Darker, semi-transparent background */
-  color: #ddd; /* Light grey text for contrast */
-  border: 2px solid #555; /* Solid, dark grey border */
-  border-radius: 0; /* Sharp, square corners */
-  font-family: 'Georgia', serif; /* A classic serif font */
-  text-transform: uppercase; /* Adds a formal touch */
-  letter-spacing: 0.08em; /* Subtle letter spacing */
-  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.6); /* Deeper shadow */
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-  min-width: 200px; /* Adjust this value as needed */
-  text-align: center; /* Center the text within the minimum width */
-}
-
-#startMenue button:hover {
-  background-color: rgba(70, 70, 70, 0.95); /* Slightly lighter on hover */
-  color: #fff;
-  border-color: #999;
-  cursor: pointer;
-}
-
-#watermark {
-  
-  font-size: 12px;
-  color: #000000; /* Adjust color as needed */
-}
- 
+/* ... (Your existing .class-card, .class-stats, .class-bonuses CSS) ... */
 
 
 

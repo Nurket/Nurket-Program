@@ -1,0 +1,166 @@
+[
+  {
+    "id": "knight",
+    "name": "Knight",
+    "description": "Honorable knight fighting for their queen, a bulwark of defense and unwavering resolve.",
+    "images": {
+      "male": "/images/knight_male.png",
+      "female": "/images/knight_female.png"
+    },
+    "baseStats": {
+      "strength": 12,
+      "dexterity": 8,
+      "constitution": 10,
+      "intelligence": 6,
+      "spirit": 7,
+      "baseHealth": 120,
+      "baseMana": 60
+    },
+    "bonus": [
+      {
+        "name": "Knight's Vow",
+        "type": "passive",
+        "description": "Choose your desired vow for a permanent passive effect.",
+        "choices": [
+          {
+            "id": "for_the_queen_vow",
+            "name": "For The Queen!",
+            "description": "Allies within 3 squares gain a 10% bonus to defense.",
+            "effect": { "type": "aura", "stat": "defense", "value": 0.10, "range": 3 }
+          },
+          {
+            "id": "holy_pact_vow",
+            "name": "Holy Pact",
+            "description": "Heal for 5 health at the start of each of your turns in combat.",
+            "effect": { "type": "heal_over_time", "value": 5, "duration": "combat" }
+          }
+        ]
+      }
+    ],
+    "startingGear": ["long_sword", "kite_shield", "full_plate_armor", "healing_potion"]
+  },
+  {
+    "id": "archer",
+    "name": "Archer",
+    "description": "A nimble combatant who excels at ranged attacks, picking off foes from a distance.",
+    "images": {
+      "male": "/images/archer_male.png",
+      "female": "/images/archer_female.png"
+    },
+    "baseStats": {
+      "strength": 7,
+      "dexterity": 12,
+      "constitution": 8,
+      "intelligence": 7,
+      "spirit": 6,
+      "baseHealth": 90,
+      "baseMana": 70
+    },
+    "bonus": [
+      {
+        "name": "On the Hunt",
+        "type": "passive",
+        "description": "Choose your desired hunting bonus for a permanent passive effect.",
+        "choices": [
+          {
+            "id": "animal_bond_bonus",
+            "name": "Animal Bond",
+            "description": "Gain a companion animal that assists in combat.",
+            "effect": { "type": "companion_summon", "companion_id": "wolf_pup" }
+          },
+          {
+            "id": "swiftness_bonus",
+            "name": "Swiftness",
+            "description": "Increases your movement speed by 1 and gives a chance to evade attacks.",
+            "effect": { "type": "stat_modifier", "movement": 1, "evasion_chance": 0.05 }
+          }
+        ]
+      }
+    ],
+    "startingGear": ["short_bow", "quiver_of_20_arrows", "leather_armor", "dagger"]
+  },
+  {
+    "id": "mage",
+    "name": "Mage",
+    "description": "A scholar of arcane arts, wielding potent elemental magic and controlling the battlefield.",
+    "images": {
+      "male": "/images/mage_male.png",
+      "female": "/images/mage_female.png"
+    },
+    "baseStats": {
+      "strength": 5,
+      "dexterity": 7,
+      "constitution": 7,
+      "intelligence": 12,
+      "spirit": 9,
+      "baseHealth": 80,
+      "baseMana": 120
+    },
+    "bonus": [
+      {
+        "name": "Arcane Mastery",
+        "type": "passive",
+        "description": "Choose your specialization in the magical arts.",
+        "choices": [
+          {
+            "id": "elemental_affinity",
+            "name": "Elemental Affinity",
+            "description": "Increases damage dealt by elemental spells by 10% and gain 5% resistance to all elemental damage.",
+            "effect": {
+              "type": "stat_modifier",
+              "spell_damage_bonus": 0.10,
+              "resistances": { "fire_damage": 0.05, "frost_damage": 0.05, "lightning_damage": 0.05 }
+            }
+          },
+          {
+            "id": "scholarly_focus",
+            "name": "Scholarly Focus",
+            "description": "Increases maximum Mana by 20 and gain 10% Mana regeneration per turn.",
+            "effect": { "type": "stat_modifier", "max_mana": 20, "mana_regen_per_turn": 0.10 }
+          }
+        ]
+      }
+    ],
+    "startingGear": ["simple_staff", "robe", "mana_potion"]
+  },
+  {
+    "id": "monk",
+    "name": "Monk",
+    "description": "A master of martial arts, relying on speed, precision, and inner spiritual energy.",
+    "images": {
+      "male": "/images/monk_male.png",
+      "female": "/images/monk_female.png"
+    },
+    "baseStats": {
+      "strength": 9,
+      "dexterity": 11,
+      "constitution": 9,
+      "intelligence": 6,
+      "spirit": 8,
+      "baseHealth": 100,
+      "baseMana": 80
+    },
+    "bonus": [
+      {
+        "name": "Martial Path",
+        "type": "passive",
+        "description": "Choose the focus of your rigorous training.",
+        "choices": [
+          {
+            "id": "iron_fist_path",
+            "name": "Iron Fist",
+            "description": "Increases unarmed attack damage by 15% and gain 5% chance to critical hit with unarmed attacks.",
+            "effect": { "type": "stat_modifier", "unarmed_damage_bonus": 0.15, "unarmed_crit_chance_bonus": 0.05 }
+          },
+          {
+            "id": "flowing_river_path",
+            "name": "Flowing River",
+            "description": "Increases evasion chance by 10% and gain 1 additional movement speed.",
+            "effect": { "type": "stat_modifier", "evasion_chance": 0.10, "movement": 1 }
+          }
+        ]
+      }
+    ],
+    "startingGear": ["monk_robes", "wooden_staff", "healing_salve"]
+  }
+]

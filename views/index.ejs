@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= title %></title>
-  <link rel="stylesheet" href="/css/index.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <%- include('./partials/head.ejs') %>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <%- include('./partials/head.ejs') %>
 </head>
 <body>
-  <div id="startMenue">
-    <img src="/images/kof.png">
-    <button onclick="window.location.href='/characterCreation'">New game</button>
-    <button>Saves</button>
-    <button>Game Info </button>
 
-  <div id="watermark">Developed By Tom Olsen / Music by ???
-    <div id="audioPlayer">
-      <i id="audioIcon" class="bi-volume-down-fill" style="cursor: pointer; font-size: 32px;"></i>
-      <audio id="backgroundMusic" loop autoplay style="display: none;">
-        <source src="music/MenuMusic.mp3" type="audio/mpeg">
-      </audio>
+    <audio id="background-music" loop autoplay>
+        <source src="/music/menu_music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="main-menu-section" class="app-section">
+        <div id="contentContainer">
+            <h1>Welcome to My Game!</h1>
+            <button id="create-character-btn">Create Character</button>
+            <button id="load-game-btn">Load Game</button>
+            <button id="settings-btn">Settings</button>
+            <button id="exit-game-btn">Exit Game</button>
+            <p>Developed By Tom</p>
+        </div>
     </div>
-  </div>
-  </div>
 
+    <div id="character-creation-section" class="app-section hidden">
+        <div id="contentContainer">
+            <h1>Choose Your Class</h1>
 
+            <div class="gender-selection">
+                <label>Select Gender:</label>
+                <input type="radio" id="male" name="gender" value="male" checked>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+            </div>
 
+            <div id="class-list-container">
+                </div>
 
+            <button id="back-to-menu-btn">Back to Main Menu</button>
+        </div>
+    </div>
 
-
-
-  <%- include('./partials/scripts.ejs') %>
-  <script src="/js/index.js"></script>
-  <script src="/js/gameInfo.js"></script>
-
-</body>
+    <%- include('./partials/scripts.ejs') %>
+    <script src="/js/gameInfo.js"></script>
+    <script src="/js/classes.json"></script> <script src="/js/index.js"></script> </body>
 </html>
