@@ -44,8 +44,8 @@
     "name": "Archer",
     "description": "A nimble combatant who excels at ranged attacks, picking off foes from a distance.",
     "images": {
-      "male": "/images/archer_male.png",
-      "female": "/images/archer_female.png"
+      "male": "/images/knight_male.png",
+      "female": "/images/knight_male.png"
     },
     "baseStats": {
       "strength": 7,
@@ -84,8 +84,8 @@
     "name": "Mage",
     "description": "A scholar of arcane arts, wielding potent elemental magic and controlling the battlefield.",
     "images": {
-      "male": "/images/mage_male.png",
-      "female": "/images/mage_female.png"
+      "male": "/images/knight_male.png",
+      "female": "/images/knight_male.png"
     },
     "baseStats": {
       "strength": 5,
@@ -128,8 +128,8 @@
     "name": "Monk",
     "description": "A master of martial arts, relying on speed, precision, and inner spiritual energy.",
     "images": {
-      "male": "/images/monk_male.png",
-      "female": "/images/monk_female.png"
+      "male": "/images/knight_male.png",
+      "female": "/images/knight_male.png"
     },
     "baseStats": {
       "strength": 9,
