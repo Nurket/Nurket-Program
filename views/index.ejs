@@ -27,24 +27,47 @@
     </div>
 
     <!-- Character Creation -->
-    <div id="character-creation-section" class="app-section hidden">
-        <div id="contentContainer">
-            <h1>Choose Your Class</h1>
-
-            <div class="gender-selection">
-                <label>Select Gender:</label>
-                <input type="radio" id="male" name="gender" value="male" checked>
-                <label for="male">Male</label>
-                <input type="radio" id="female" name="gender" value="female">
-                <label for="female">Female</label>
-            </div>
-
-            <div id="class-list-container"></div>
-            <div id="selected-class-info" class="hidden"></div>
-
-            <button id="back-to-menu-btn">Back to Main Menu</button>
-        </div>
+<div id="character-creation-section" class="app-section hidden">
+  <div id="contentContainer">
+    <h1>Character Creation</h1>
+    <button id="back-to-menu-btn">Back to Main Menu</button>
+    <button id="confirm-creation-btn">Confirm</button>
+    <!-- New container that holds the grid + details -->
+    <div id="class-layout-container">
+      <div id="class-list-container"></div>
+      <div id="selected-class-info" class="hidden"></div>
     </div>
+
+
+  </div>
+</div>
+
+
+<!-- Origin and passives selection -->
+<div id="character-origin-section" class="app-section hidden">
+  <div id="contentContainer">
+    <h1>Origin & Passives</h1>
+    <button id="back-to-creation-btn">Back to Character Creation</button>
+    <button id="confirm-origin-btn">Confirm</button>
+
+    <div id="origin-selection-container">
+      <h2>Origins</h2>
+      <div id="origin-list"></div>
+    </div>
+
+    <div id="unique-passive-selection-container">
+      <h2>Unique Class Passive</h2>
+      <div id="unique-passive-list"></div>
+    </div>
+
+    <div id="additional-passives-selection-container">
+      <h2>Additional Passives (Select 2)</h2>
+      <div id="additional-passives-list"></div>
+    </div>
+  </div>
+</div>
+
+
 
     <%- include('./partials/scripts.ejs') %>
     <script src="/js/gameInfo.js"></script>

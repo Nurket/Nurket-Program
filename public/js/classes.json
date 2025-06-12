@@ -162,5 +162,85 @@
       }
     ],
     "startingGear": ["monk_robes", "wooden_staff", "healing_salve"]
-  }
+  },
+  {
+  "id": "rogue",
+  "name": "Rogue",
+  "description": "A nimble infiltrator who thrives in the shadows, exploiting enemies with precise strikes and evasion.",
+  "images": {
+    "male": "/images/knight_male.png",
+    "female": "/images/knight_male.png"
+  },
+  "baseStats": {
+    "strength": 8,
+    "dexterity": 14,
+    "constitution": 7,
+    "intelligence": 8,
+    "spirit": 5,
+    "baseHealth": 85,
+    "baseMana": 50
+  },
+  "bonus": [
+    {
+      "name": "Shadow Arts",
+      "type": "passive",
+      "description": "Choose a shadow technique for a unique passive effect.",
+      "choices": [
+        {
+          "id": "poison_blades",
+          "name": "Poison Blades",
+          "description": "Attacks apply poison that deals 3 damage per turn for 3 turns.",
+          "effect": { "type": "damage_over_time", "element": "poison", "value": 3, "duration": 3 }
+        },
+        {
+          "id": "shadowstep",
+          "name": "Shadowstep",
+          "description": "Gain +2 movement on the first turn of combat and ignore terrain penalties.",
+          "effect": { "type": "mobility_boost", "value": 2, "duration": 1, "ignoreTerrain": true }
+        }
+      ]
+    }
+  ],
+  "startingGear": ["dagger", "leather_armor", "smoke_bomb", "poison_vial"]
+},
+{
+  "id": "barbarian",
+  "name": "Barbarian",
+  "description": "A savage force of nature whose rage fuels overwhelming strength and relentless ferocity.",
+  "images": {
+    "male": "/images/knight_male.png",
+    "female": "/images/knight_male.png"
+  },
+  "baseStats": {
+    "strength": 15,
+    "dexterity": 9,
+    "constitution": 12,
+    "intelligence": 4,
+    "spirit": 6,
+    "baseHealth": 140,
+    "baseMana": 30
+  },
+  "bonus": [
+    {
+      "name": "Rageborn",
+      "type": "passive",
+      "description": "Choose a rage trait for bonus effects while in combat.",
+      "choices": [
+        {
+          "id": "blood_fury",
+          "name": "Blood Fury",
+          "description": "Gain +20% damage when below 50% health.",
+          "effect": { "type": "conditional_buff", "condition": "low_health", "stat": "damage", "value": 0.20 }
+        },
+        {
+          "id": "unyielding_rage",
+          "name": "Unyielding Rage",
+          "description": "Take 15% less damage while raging.",
+          "effect": { "type": "damage_reduction", "condition": "raging", "value": 0.15 }
+        }
+      ]
+    }
+  ],
+  "startingGear": ["great_axe", "fury_tonic", "iron_hide", "wolfskin_cloak"]
+}
 ]

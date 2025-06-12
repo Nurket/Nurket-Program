@@ -1,0 +1,20 @@
+[
+  {
+    "id": "northern_realm",
+    "name": "Northern Realm",
+    "description": "Hardy people from the cold north.",
+    "bonuses": [
+      { "stat": "strength", "value": 2 },
+      { "stat": "endurance", "value": 3 }
+    ]
+  },
+  {
+    "id": "desert_nomads",
+    "name": "Desert Nomads",
+    "description": "Survivors of harsh deserts.",
+    "bonuses": [
+      { "stat": "agility", "value": 3 },
+      { "stat": "intelligence", "value": 1 }
+    ]
+  }
+]

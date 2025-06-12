@@ -1,0 +1,14 @@
+[
+  {
+    "id": "swift_footed",
+    "name": "Swift Footed",
+    "description": "Increases movement speed by 10%.",
+    "effect": { "movementSpeed": 10 }
+  },
+  {
+    "id": "iron_skin",
+    "name": "Iron Skin",
+    "description": "Reduces physical damage taken by 5%.",
+    "effect": { "physicalDamageReduction": 5 }
+  }
+]
