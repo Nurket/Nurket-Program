@@ -14,30 +14,36 @@
         Your browser does not support the audio element.
     </audio>
 
-    <!-- Main Menu -->
-    <div id="main-menu-section" class="app-section">
-        <div id="contentContainer">
-            <img src="/images/kof.png" alt="Error icon">
-            <button id="create-character-btn">Create Character</button>
-            <button id="load-game-btn">Load Game</button>
-            <button id="settings-btn">Settings</button>
-            <button id="exit-game-btn">Exit Game</button>
-            <p>Developed By Tom</p>
-        </div>
-    </div>
+<!-- Main Menu -->
+<div id="main-menu-section" class="app-section">
+  <div id="contentContainer">
+    <img src="/images/kof.png" alt="Error icon">
+    <button id="create-character-btn">Create Character</button>
+    <button id="load-game-btn">Game saves</button>
 
-    <!-- Character Creation -->
+    <button id="exit-game-btn">Exit Game</button>
+  </div>
+
+  <!-- Move outside contentContainer -->
+  <p class="footer-credit">Developed By Tom</p>
+</div>
+
+<!-- Character Creation -->
 <div id="character-creation-section" class="app-section hidden">
   <div id="contentContainer">
-    <h1>Character Creation</h1>
-    <button id="back-to-menu-btn">Back to Main Menu</button>
-    <button id="confirm-creation-btn">Confirm</button>
-    <!-- New container that holds the grid + details -->
+
+    <!-- New wrapper for title + buttons -->
+<div class="header-row">
+  <button id="back-to-menu-btn" class="left-btn">Back to Main Menu</button>
+  <h1>Class Selection</h1>
+  <button id="confirm-creation-btn" class="right-btn">Confirm</button>
+</div>
+
+    <!-- Layout -->
     <div id="class-layout-container">
       <div id="class-list-container"></div>
       <div id="selected-class-info" class="hidden"></div>
     </div>
-
 
   </div>
 </div>
@@ -46,9 +52,12 @@
 <!-- Origin and passives selection -->
 <div id="character-origin-section" class="app-section hidden">
   <div id="contentContainer">
-    <h1>Origin & Passives</h1>
-    <button id="back-to-creation-btn">Back to Character Creation</button>
-    <button id="confirm-origin-btn">Confirm</button>
+
+<div class="header-row">
+  <button id="back-to-creation-btn" class="left-btn">Back to class selection</button>
+  <h1>Origin & Passives</h1>
+  <button id="confirm-origin-btn" class="right-btn">Confirm</button>
+</div>
 
     <div id="origin-selection-container">
       <h2>Origins</h2>

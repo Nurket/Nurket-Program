@@ -19,6 +19,16 @@ const originListDiv = document.getElementById('origin-list');
 const uniquePassiveListDiv = document.getElementById('unique-passive-list');
 const additionalPassivesListDiv = document.getElementById('additional-passives-list');
 
+
+// EXIT BUTTON ON MENU
+const { ipcRenderer } = require('electron');
+
+document.getElementById('exit-game-btn').addEventListener('click', () => {
+  ipcRenderer.send('exit-app');
+});
+
+
+// ------
 let allClassesData = [];
 let originsData = [];
 let additionalPassivesData = [];

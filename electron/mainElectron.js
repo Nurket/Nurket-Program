@@ -47,3 +47,11 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+
+// listen to exist event for exit button
+const { ipcMain } = require('electron');
+
+ipcMain.on('exit-app', () => {
+  app.quit();
+});
