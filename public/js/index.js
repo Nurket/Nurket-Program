@@ -2,6 +2,7 @@
 const mainMenuSection = document.getElementById('main-menu-section');
 const characterCreationSection = document.getElementById('character-creation-section');
 const characterOriginSection = document.getElementById('character-origin-section');
+const characterReviewSection = document.getElementById('character-review-section');
 
 const createCharacterBtn = document.getElementById('create-character-btn');
 const backToMenuBtn = document.getElementById('back-to-menu-btn');
@@ -9,6 +10,7 @@ const confirmCreationBtn = document.getElementById('confirm-creation-btn');
 
 const backToCreationBtn = document.getElementById('back-to-creation-btn');
 const confirmOriginBtn = document.getElementById('confirm-origin-btn');
+const finalConfirmBtn = document.getElementById('final-confirm-btn');
 
 const backgroundMusic = document.getElementById('background-music');
 
@@ -19,9 +21,151 @@ const originListDiv = document.getElementById('origin-list');
 const uniquePassiveListDiv = document.getElementById('unique-passive-list');
 const additionalPassivesListDiv = document.getElementById('additional-passives-list');
 
+const characterData = {
+  classId: null,             // I changed 'class' to 'classId' to match your code usage
+  originId: null,
+  uniquePassiveIndex: null,
+  additionalPassiveIndices: [],
+  name: '',
+  gender: null,
+  classImageUrl: null,
+};
+
+
+// SAVING AND LOADING AND STUFF
+const fs = require('fs');
+const path = require('path');
+const { ipcRenderer } = require('electron');
+
+async function getSaveFilePath(slot = 1) {
+  const userDataPath = await ipcRenderer.invoke('get-user-data-path');
+  return path.join(userDataPath, `character_save_${slot}.json`);
+}
+
+async function saveCharacterToDisk(characterData, slot = 1) {
+  try {
+    const filePath = await getSaveFilePath(slot);
+    fs.writeFile(filePath, JSON.stringify(characterData, null, 2), (err) => {
+      if (err) {
+        console.error('Failed to save character:', err);
+        alert('Error saving character data!');
+      } else {
+        console.log(`Character saved to slot ${slot}`);
+        alert(`Character saved successfully to slot ${slot}!`);
+      }
+    });
+  } catch (e) {
+    console.error('Error getting save file path:', e);
+  }
+}
+
+async function loadCharacterFromDisk(slot = 1) {
+  try {
+    const filePath = await getSaveFilePath(slot);
+    return new Promise((resolve, reject) => {
+      fs.readFile(filePath, 'utf-8', (err, data) => {
+        if (err) {
+          reject(err);
+        } else {
+          try {
+            resolve(JSON.parse(data));
+          } catch (e) {
+            reject(e);
+          }
+        }
+      });
+    });
+  } catch (e) {
+    console.error('Error getting save file path:', e);
+    throw e;
+  }
+}
+
+async function listAllSaves(maxSlots = 3) {
+  const saves = [];
+  for (let slot = 1; slot <= maxSlots; slot++) {
+    try {
+      const data = await loadCharacterFromDisk(slot);
+      saves.push({ slot, data });
+    } catch {
+      // no save or failed to read; skip
+    }
+  }
+  return saves;
+}
+
+// Delete save file by slot
+async function deleteSave(slot = 1) {
+  try {
+    const filePath = await getSaveFilePath(slot);
+    fs.unlink(filePath, (err) => {
+      if (err) {
+        console.error(`Failed to delete save slot ${slot}:`, err);
+        alert(`Could not delete save slot ${slot}. It might not exist.`);
+      } else {
+        alert(`Save slot ${slot} deleted successfully.`);
+        loadGameBtn.click(); // Refresh the save list after deletion
+      }
+    });
+  } catch (e) {
+    console.error('Error deleting save file:', e);
+  }
+}
+
+// UI and event listeners
+
+const loadGameBtn = document.getElementById('load-game-btn');
+const loadGameContainer = document.getElementById('load-game-container');
+
+loadGameBtn.addEventListener('click', async () => {
+  const saves = await listAllSaves();
+
+  if (saves.length === 0) {
+    loadGameContainer.innerHTML = '<p>No saved games found.</p>';
+  } else {
+    loadGameContainer.innerHTML = '<h3>Select a save to load or delete:</h3>';
+
+    saves.forEach(save => {
+      const btnLoad = document.createElement('button');
+      btnLoad.textContent = `Load Slot ${save.slot}: ${save.data.name || 'Unnamed Character'}`;
+      btnLoad.style.marginRight = '10px';
+
+      const btnDelete = document.createElement('button');
+      btnDelete.textContent = `Delete Slot ${save.slot}`;
+
+      btnLoad.addEventListener('click', () => {
+        characterData = save.data;
+        currentGender = characterData.gender || 'male';
+        selectedClassId = characterData.classId || null;
+
+        alert(`Loaded character: ${characterData.name}`);
+
+        showSection(characterReviewSection);
+        renderUsernameInput();
+        renderFinalReview();
+
+        loadGameContainer.classList.add('hidden');
+      });
+
+      btnDelete.addEventListener('click', () => {
+        if (confirm(`Are you sure you want to delete save slot ${save.slot}?`)) {
+          deleteSave(save.slot);
+        }
+      });
+
+      const container = document.createElement('div');
+      container.style.margin = '5px 0';
+      container.appendChild(btnLoad);
+      container.appendChild(btnDelete);
+
+      loadGameContainer.appendChild(container);
+    });
+  }
+
+  loadGameContainer.classList.remove('hidden');
+});
 
 // EXIT BUTTON ON MENU
-const { ipcRenderer } = require('electron');
 
 document.getElementById('exit-game-btn').addEventListener('click', () => {
   ipcRenderer.send('exit-app');
@@ -36,11 +180,15 @@ let additionalPassivesData = [];
 let currentGender = 'male'; // default gender
 let selectedClassId = null;
 
-let characterData = {}; // to store selections across steps
 
 // --- Utility: Show only one section ---
 function showSection(section) {
-  [mainMenuSection, characterCreationSection, characterOriginSection].forEach(sec => {
+  [
+    mainMenuSection,
+    characterCreationSection,
+    characterOriginSection,
+    characterReviewSection // ✅ include this
+  ].forEach(sec => {
     sec.classList.toggle('hidden', sec !== section);
   });
 }
@@ -290,6 +438,65 @@ async function loadAdditionalPassives() {
   });
 }
 
+// Final review render
+function renderUsernameInput() {
+  const container = document.getElementById('username-input');
+  container.innerHTML = `
+    <label for="username">Character Name</label>
+    <input type="text" id="username" placeholder="Enter your character's name" style="width: 100%; padding: 10px; margin-top: 5px;">
+  `;
+}
+
+function renderFinalReview() {
+  const selectedClass = allClassesData.find(c => c.id === characterData.classId);
+  const origin = originsData.find(o => o.id === characterData.originId);
+  const uniquePassive = selectedClass?.bonus?.flatMap(b => b.choices)?.find(p => p.id == characterData.uniquePassiveIndex);
+  const additional = additionalPassivesData.filter(p => characterData.additionalPassiveIndices.includes(p.id));
+
+  const summaryDiv = document.getElementById('character-summary');
+  summaryDiv.innerHTML = `
+    <h2>Your Character</h2>
+    <img src="${characterData.classImageUrl}" alt="Class Image" style="max-width: 200px; display: block; margin: 10px auto; border: 2px solid #ccc; border-radius: 10px;">
+    
+    <p><strong>Class:</strong> ${selectedClass?.name}</p>
+    <p><strong>Gender:</strong> ${characterData.gender}</p>
+    <p><strong>Origin:</strong> ${origin?.name}</p>
+    <p><strong>Unique Passive:</strong> ${uniquePassive?.name}</p>
+    <p><strong>Additional Passives:</strong> ${additional.map(p => p.name).join(', ')}</p>
+  `;
+
+  if (!selectedClass || !origin || !uniquePassive) {
+  alert('Something went wrong preparing the review. Please go back and try again.');
+  return;
+}
+}
+
+
+// confirm final choices
+document.addEventListener('click', (e) => {
+  if (e.target && e.target.id === 'final-confirm-btn') {
+    const usernameInput = document.getElementById('username');
+    const name = usernameInput?.value.trim();
+
+    if (!name) {
+      alert('Please enter a character name.');
+      return;
+    }
+
+    characterData.name = name;
+
+    saveCharacterToDisk(characterData, 1);
+    showSection(mainMenuSection);
+  }
+});
+
+// back to origin
+const backToOriginBtn = document.getElementById('back-to-origin-btn');
+
+backToOriginBtn.addEventListener('click', () => {
+  showSection(characterOriginSection);
+});
+
 // --- Event Listeners ---
 
 createCharacterBtn.addEventListener('click', () => {
@@ -307,9 +514,13 @@ confirmCreationBtn.addEventListener('click', () => {
     return;
   }
 
-  // Save character data
+  const selectedClass = allClassesData.find(c => c.id === selectedClassId);
+
   characterData.classId = selectedClassId;
   characterData.gender = currentGender; // already tracked globally
+
+  // Save the image URL matching the gender for the final review
+  characterData.classImageUrl = selectedClass.images[currentGender] || selectedClass.images.male;
 
   // Show origin/passive selection screen
   showSection(characterOriginSection);
@@ -329,36 +540,34 @@ backToCreationBtn.addEventListener('click', () => {
 });
 
 confirmOriginBtn.addEventListener('click', () => {
-  // Validate selections
   const selectedOriginRadio = document.querySelector('input[name="origin"]:checked');
+  const selectedUniquePassiveRadio = document.querySelector('input[name="uniquePassive"]:checked');
+  const selectedAdditionalPassives = Array.from(document.querySelectorAll('input[name="additionalPassive"]:checked'));
+
   if (!selectedOriginRadio) {
     alert('Please select an origin.');
     return;
   }
-  const selectedUniquePassiveRadio = document.querySelector('input[name="uniquePassive"]:checked');
+
   if (!selectedUniquePassiveRadio) {
     alert('Please select a unique passive.');
     return;
   }
-  const selectedAdditionalPassives = Array.from(document.querySelectorAll('input[name="additionalPassive"]:checked'));
 
   if (selectedAdditionalPassives.length > 2) {
     alert('You can only select up to 2 additional passives.');
     return;
   }
 
-  // Save to characterData
+  // Save interim data
   characterData.originId = selectedOriginRadio.value;
-  characterData.uniquePassiveIndex = parseInt(selectedUniquePassiveRadio.value, 10);
-  characterData.additionalPassiveIndices = selectedAdditionalPassives.map(cb => parseInt(cb.value, 10));
+characterData.uniquePassiveIndex = selectedUniquePassiveRadio.value;
+characterData.additionalPassiveIndices = selectedAdditionalPassives.map(cb => cb.value);
 
-  // TODO: Proceed with character creation or next steps
-  console.log('Final character data:', characterData);
-
-  alert(`Character "${characterData.name}" created successfully!`);
-
-  // Return to main menu (or proceed further)
-  showSection(mainMenuSection);
+  // Now show review section
+  showSection(characterReviewSection);
+  renderUsernameInput();
+  renderFinalReview(); // You define this
 });
 
 // --- Initialization ---

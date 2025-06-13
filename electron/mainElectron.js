@@ -25,8 +25,8 @@ function createWindow() {
     mainWindow = null;
   });
 
-  // Remove the application menu
-  Menu.setApplicationMenu(null);
+  // this removes the top bar / consologe and so on settings in electron for clearer look: For devs keep this not active
+//  Menu.setApplicationMenu(null);
 }
 
 app.whenReady().then(() => {
@@ -54,4 +54,10 @@ const { ipcMain } = require('electron');
 
 ipcMain.on('exit-app', () => {
   app.quit();
+});
+
+
+// saving stuff
+ipcMain.handle('get-user-data-path', () => {
+  return app.getPath('userData');
 });

@@ -37,7 +37,7 @@ body {
 }
 
 /* Menu buttons */
-#main-menu-section button, #back-to-menu-btn, #confirm-creation-btn, #back-to-creation-btn, #confirm-origin-btn {
+#main-menu-section button, #back-to-menu-btn, #confirm-creation-btn, #back-to-creation-btn, #confirm-origin-btn, #final-confirm-btn, #back-to-origin-btn  {
     display: block;
     width: 250px;
     padding: 15px;
