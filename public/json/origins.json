@@ -1,17 +1,17 @@
 [
   {
-    "id": "cold_north",
-    "name": "Cold North",
-    "description": "You surived endless winters in the north.",
+    "id": "the_north",
+    "name": "The North",
+    "description": "You survived endless winters in the north. In return you got strong and independent.",
     "bonuses": [
       { "stat": "strength", "value": 2 },
-      { "stat": "endurance", "value": 3 }
+      { "stat": "endurance", "value": 2 }
     ]
   },
   {
-    "id": "endless_sands",
-    "name": "Endless sands",
-    "description": "Fighting for your life in the desert made you only stronger. ",
+    "id": "town_life",
+    "name": "Town life",
+    "description": "You grew up in more stable circumstances. ",
     "bonuses": [
       { "stat": "agility", "value": 3 },
       { "stat": "intelligence", "value": 1 }
@@ -27,9 +27,36 @@
     ]
   },
     {
-    "id": "royalty",
-    "name": "Royalty",
+    "id": "royal_blood",
+    "name": "Royal blood",
     "description": "Blessed with being born into the majestic life. Yet you choose everything else.",
+    "bonuses": [
+      { "stat": "agility", "value": 3 },
+      { "stat": "intelligence", "value": 1 }
+    ]
+  },
+      {
+    "id": "wanderer",
+    "name": "Wanderer",
+    "description": "Following the road wheverever it takes you. It made you adaptable.",
+    "bonuses": [
+      { "stat": "agility", "value": 3 },
+      { "stat": "intelligence", "value": 1 }
+    ]
+  },
+      {
+    "id": "thief_life",
+    "name": "Thief Life",
+    "description": "You love to steal what you see fit is yours.",
+    "bonuses": [
+      { "stat": "agility", "value": 3 },
+      { "stat": "intelligence", "value": 1 }
+    ]
+  },
+      {
+    "id": "army",
+    "name": "Army",
+    "description": "Growing up in the army and follwing their rules without hesitation. It made you direct and trustworthy.",
     "bonuses": [
       { "stat": "agility", "value": 3 },
       { "stat": "intelligence", "value": 1 }

@@ -193,6 +193,21 @@ function renderSelectedClass(cls) {
     passiveDiv.appendChild(ul);
     selectedClassInfo.appendChild(passiveDiv);
   }
+
+  if (cls.specializations && cls.specializations.length > 0) {
+  const specDiv = document.createElement('div');
+  specDiv.innerHTML = '<h3>Specializations(lvl 50)</h3>';
+  const ul = document.createElement('ul');
+
+  cls.specializations.forEach(spec => {
+    const li = document.createElement('li');
+    li.innerHTML = `<strong>${spec.name}:</strong> ${spec.description}`;
+    ul.appendChild(li);
+  });
+
+  specDiv.appendChild(ul);
+  selectedClassInfo.appendChild(specDiv);
+}
 }
 
 // --- Load Origin Radios ---

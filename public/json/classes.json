@@ -1,44 +1,66 @@
 [
-  {
-    "id": "knight",
-    "name": "Knight",
-    "description": "Honorable knight fighting for their queen, a bulwark of defense and unwavering resolve.",
-    "images": {
-      "male": "/images/knight_male.png",
-      "female": "/images/knight_female.png"
-    },
-    "baseStats": {
-      "strength": 12,
-      "dexterity": 8,
-      "constitution": 10,
-      "intelligence": 6,
-      "spirit": 7,
-      "baseHealth": 120,
-      "baseMana": 60
-    },
-    "bonus": [
-      {
-        "name": "Knight's Vow",
-        "type": "passive",
-        "description": "Choose your desired vow for a permanent passive effect.",
-        "choices": [
-          {
-            "id": "for_the_queen_vow",
-            "name": "For The Queen!",
-            "description": "Allies within 3 squares gain a 10% bonus to defense.",
-            "effect": { "type": "aura", "stat": "defense", "value": 0.10, "range": 3 }
-          },
-          {
-            "id": "holy_pact_vow",
-            "name": "Holy Pact",
-            "description": "Heal for 5 health at the start of each of your turns in combat.",
-            "effect": { "type": "heal_over_time", "value": 5, "duration": "combat" }
-          }
-        ]
-      }
-    ],
-    "startingGear": ["long_sword", "kite_shield", "full_plate_armor", "healing_potion"]
+{
+  "id": "knight",
+  "name": "Knight",
+  "description": "Honorable knight fighting for their queen, a bulwark of defense and unwavering resolve.",
+  "images": {
+    "male": "/images/knight_male.png",
+    "female": "/images/knight_female.png"
   },
+  "baseStats": {
+    "strength": 12,
+    "dexterity": 8,
+    "constitution": 10,
+    "intelligence": 6,
+    "spirit": 7,
+    "baseHealth": 120,
+    "baseMana": 60
+  },
+  "bonus": [
+    {
+      "name": "Knight's Vow",
+      "type": "passive",
+      "description": "Choose your desired vow for a permanent passive effect.",
+      "choices": [
+        {
+          "id": "for_the_queen_vow",
+          "name": "For The Queen!",
+          "description": "Allies within 3 squares gain a 10% bonus to defense.",
+          "effect": { "type": "aura", "stat": "defense", "value": 0.10, "range": 3 }
+        },
+        {
+          "id": "holy_pact_vow",
+          "name": "Holy Pact",
+          "description": "Heal for 5 health at the start of each of your turns in combat.",
+          "effect": { "type": "heal_over_time", "value": 5, "duration": "combat" }
+        }
+      ]
+    }
+  ],
+  "specializations": [
+    {
+      "id": "paladin",
+      "name": "Paladin",
+      "description": "A holy warrior who smites evil and protects allies with divine power.",
+      "bonuses": [
+        { "effect": "smite_damage", "value": 10 },
+        { "stat": "spirit", "value": 3 }
+      ],
+      "image": "/images/paladin.png"
+    },
+    {
+      "id": "templar",
+      "name": "Templar",
+      "description": "A disciplined enforcer of order, shielded in sacred armor.",
+      "bonuses": [
+        { "stat": "defense", "value": 5 },
+        { "effect": "damage_reflect", "value": 0.05 }
+      ],
+      "image": "/images/templar.png"
+    }
+  ],
+  "startingGear": ["long_sword", "kite_shield", "full_plate_armor", "healing_potion"]
+},
   {
     "id": "archer",
     "name": "Archer",
@@ -77,6 +99,28 @@
         ]
       }
     ],
+      "specializations": [
+    {
+      "id": "paladin",
+      "name": "Paladin",
+      "description": "A holy warrior who smites evil and protects allies with divine power.",
+      "bonuses": [
+        { "effect": "smite_damage", "value": 10 },
+        { "stat": "spirit", "value": 3 }
+      ],
+      "image": "/images/paladin.png"
+    },
+    {
+      "id": "templar",
+      "name": "Templar",
+      "description": "A disciplined enforcer of order, shielded in sacred armor.",
+      "bonuses": [
+        { "stat": "defense", "value": 5 },
+        { "effect": "damage_reflect", "value": 0.05 }
+      ],
+      "image": "/images/templar.png"
+    }
+  ],
     "startingGear": ["short_bow", "quiver_of_20_arrows", "leather_armor", "dagger"]
   },
   {
@@ -121,6 +165,28 @@
         ]
       }
     ],
+      "specializations": [
+    {
+      "id": "paladin",
+      "name": "Paladin",
+      "description": "A holy warrior who smites evil and protects allies with divine power.",
+      "bonuses": [
+        { "effect": "smite_damage", "value": 10 },
+        { "stat": "spirit", "value": 3 }
+      ],
+      "image": "/images/paladin.png"
+    },
+    {
+      "id": "templar",
+      "name": "Templar",
+      "description": "A disciplined enforcer of order, shielded in sacred armor.",
+      "bonuses": [
+        { "stat": "defense", "value": 5 },
+        { "effect": "damage_reflect", "value": 0.05 }
+      ],
+      "image": "/images/templar.png"
+    }
+  ],
     "startingGear": ["simple_staff", "robe", "mana_potion"]
   },
   {
@@ -161,6 +227,28 @@
         ]
       }
     ],
+      "specializations": [
+    {
+      "id": "paladin",
+      "name": "Paladin",
+      "description": "A holy warrior who smites evil and protects allies with divine power.",
+      "bonuses": [
+        { "effect": "smite_damage", "value": 10 },
+        { "stat": "spirit", "value": 3 }
+      ],
+      "image": "/images/paladin.png"
+    },
+    {
+      "id": "templar",
+      "name": "Templar",
+      "description": "A disciplined enforcer of order, shielded in sacred armor.",
+      "bonuses": [
+        { "stat": "defense", "value": 5 },
+        { "effect": "damage_reflect", "value": 0.05 }
+      ],
+      "image": "/images/templar.png"
+    }
+  ],
     "startingGear": ["monk_robes", "wooden_staff", "healing_salve"]
   },
   {
@@ -201,6 +289,28 @@
       ]
     }
   ],
+    "specializations": [
+    {
+      "id": "paladin",
+      "name": "Paladin",
+      "description": "A holy warrior who smites evil and protects allies with divine power.",
+      "bonuses": [
+        { "effect": "smite_damage", "value": 10 },
+        { "stat": "spirit", "value": 3 }
+      ],
+      "image": "/images/paladin.png"
+    },
+    {
+      "id": "templar",
+      "name": "Templar",
+      "description": "A disciplined enforcer of order, shielded in sacred armor.",
+      "bonuses": [
+        { "stat": "defense", "value": 5 },
+        { "effect": "damage_reflect", "value": 0.05 }
+      ],
+      "image": "/images/templar.png"
+    }
+  ],
   "startingGear": ["dagger", "leather_armor", "smoke_bomb", "poison_vial"]
 },
 {
@@ -239,6 +349,28 @@
           "effect": { "type": "damage_reduction", "condition": "raging", "value": 0.15 }
         }
       ]
+    }
+  ],
+    "specializations": [
+    {
+      "id": "paladin",
+      "name": "Paladin",
+      "description": "A holy warrior who smites evil and protects allies with divine power.",
+      "bonuses": [
+        { "effect": "smite_damage", "value": 10 },
+        { "stat": "spirit", "value": 3 }
+      ],
+      "image": "/images/paladin.png"
+    },
+    {
+      "id": "templar",
+      "name": "Templar",
+      "description": "A disciplined enforcer of order, shielded in sacred armor.",
+      "bonuses": [
+        { "stat": "defense", "value": 5 },
+        { "effect": "damage_reflect", "value": 0.05 }
+      ],
+      "image": "/images/templar.png"
     }
   ],
   "startingGear": ["great_axe", "fury_tonic", "iron_hide", "wolfskin_cloak"]
