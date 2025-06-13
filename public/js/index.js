@@ -48,7 +48,7 @@ function showSection(section) {
 // --- Fetch JSON Data ---
 async function fetchClasses() {
   try {
-    const res = await fetch('/js/classes.json');
+    const res = await fetch('/json/classes.json');
     if (!res.ok) throw new Error('Failed to fetch classes.json');
     return await res.json();
   } catch (e) {
@@ -60,7 +60,7 @@ async function fetchClasses() {
 async function fetchOrigins() {
   try {
     if (originsData.length) return originsData; // cache
-    const res = await fetch('/js/origins.json');
+    const res = await fetch('/json/origins.json');
     if (!res.ok) throw new Error('Failed to fetch origins.json');
     originsData = await res.json();
     return originsData;
@@ -73,7 +73,7 @@ async function fetchOrigins() {
 async function fetchAdditionalPassives() {
   try {
     if (additionalPassivesData.length) return additionalPassivesData; // cache
-    const res = await fetch('/js/additionalPassives.json');
+    const res = await fetch('/json/additionalPassives.json');
     if (!res.ok) throw new Error('Failed to fetch additionalPassives.json');
     additionalPassivesData = await res.json();
     return additionalPassivesData;
