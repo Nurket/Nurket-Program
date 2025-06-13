@@ -1,14 +1,51 @@
 [
   {
-    "id": "swift_footed",
-    "name": "Swift Footed",
-    "description": "Increases movement speed by 10%.",
-    "effect": { "movementSpeed": 10 }
+    "id": "strong",
+    "name": "Strong",
+    "description": "Increases strenght and constitution by 1.",
+    "bonuses": [
+      { "stat": "strength", "value": 1 },
+      { "stat": "constitution", "value": 1 }
+    ]
   },
   {
     "id": "iron_skin",
     "name": "Iron Skin",
-    "description": "Reduces physical damage taken by 5%.",
-    "effect": { "physicalDamageReduction": 5 }
+    "description": "Reduces physical damage taken by 5.",
+    "bonuses": [
+      { "effect": "incomming damage", "value": 5 }
+    ]
+  },
+    {
+    "id": "mad",
+    "name": "Mad",
+    "description": "Increase strenght by 2.",
+    "bonuses": [
+      { "stat": "strength", "value": 2 }
+    ]
+  },
+    {
+    "id": "magician",
+    "name": "Magican",
+    "description": "Increase intelligence by 2.",
+    "bonuses": [
+      { "stat": "intelligence", "value": 2 }
+    ]
+  },
+    {
+    "id": "victem",
+    "name": "Victem",
+    "description": "Increase constitution by 2",
+    "bonuses": [
+      { "stat": "constitution", "value": 2 }
+    ]
+  },
+      {
+    "id": "swiftness",
+    "name": "Swiftness",
+    "description": "Increase attackspeed by 5",
+    "bonuses": [
+      { "effect": "attackSpeed", "value": 5 }
+    ]
   }
 ]

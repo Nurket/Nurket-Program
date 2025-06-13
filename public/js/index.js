@@ -220,14 +220,21 @@ function loadUniquePassives() {
     return;
   }
 
-  selectedClass.bonus.forEach((bonus, idx) => {
-    const id = `uniquePassive-${idx}`;
-    uniquePassiveListDiv.innerHTML += `
-      <div>
-        <input type="radio" name="uniquePassive" id="${id}" value="${idx}">
-        <label for="${id}"><strong>${bonus.name}:</strong> ${bonus.description}</label>
-      </div>
-    `;
+  selectedClass.bonus.forEach((bonus, bonusIdx) => {
+    if (!bonus.choices || bonus.choices.length === 0) return;
+
+    const sectionTitle = `<h3>${bonus.name}</h3><p>${bonus.description}</p>`;
+    uniquePassiveListDiv.innerHTML += sectionTitle;
+
+    bonus.choices.forEach((choice, choiceIdx) => {
+      const id = `uniquePassive-${bonusIdx}-${choiceIdx}`;
+      uniquePassiveListDiv.innerHTML += `
+        <div>
+          <input type="radio" name="uniquePassive" id="${id}" value="${choice.id}">
+          <label for="${id}"><strong>${choice.name}:</strong> ${choice.description}</label>
+        </div>
+      `;
+    });
   });
 }
 
@@ -238,19 +245,30 @@ async function loadAdditionalPassives() {
 
   additionalPassivesData.forEach((passive, idx) => {
     const id = `additionalPassive-${idx}`;
+
+    const bonuses = passive.bonuses || [];
+
+    const bonusText = bonuses.map(b => {
+      if (b.stat) return `${b.stat} +${b.value}`;
+      if (b.effect) return `${b.effect} +${b.value}`;
+      return '';
+    }).join(', ');
+
     additionalPassivesListDiv.innerHTML += `
       <div>
-        <input type="checkbox" name="additionalPassive" id="${id}" value="${idx}">
-        <label for="${id}"><strong>${passive.name}:</strong> ${passive.description}</label>
+        <input type="checkbox" name="additionalPassive" id="${id}" value="${passive.id}">
+        <label for="${id}">
+          <strong>${passive.name}:</strong> ${passive.description}<br>
+          <small style="color: #aaa;">(${bonusText})</small>
+        </label>
       </div>
     `;
   });
 
   // Limit to max 2 selected checkboxes
-  additionalPassivesListDiv.addEventListener('change', () => {
+  additionalPassivesListDiv.addEventListener('change', (event) => {
     const checkedBoxes = additionalPassivesListDiv.querySelectorAll('input[type=checkbox]:checked');
     if (checkedBoxes.length > 2) {
-      // Uncheck the last changed box
       event.target.checked = false;
       alert('You can only select up to 2 additional passives.');
     }

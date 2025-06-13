@@ -1,20 +1,39 @@
 [
   {
-    "id": "northern_realm",
-    "name": "Northern Realm",
-    "description": "Hardy people from the cold north.",
+    "id": "cold_north",
+    "name": "Cold North",
+    "description": "You surived endless winters in the north.",
     "bonuses": [
       { "stat": "strength", "value": 2 },
       { "stat": "endurance", "value": 3 }
     ]
   },
   {
-    "id": "desert_nomads",
-    "name": "Desert Nomads",
-    "description": "Survivors of harsh deserts.",
+    "id": "endless_sands",
+    "name": "Endless sands",
+    "description": "Fighting for your life in the desert made you only stronger. ",
+    "bonuses": [
+      { "stat": "agility", "value": 3 },
+      { "stat": "intelligence", "value": 1 }
+    ]
+  },
+    {
+    "id": "forest",
+    "name": "The forest",
+    "description": "You grew up hunting and living a lonely life in the forest.",
+    "bonuses": [
+      { "stat": "agility", "value": 3 },
+      { "stat": "intelligence", "value": 1 }
+    ]
+  },
+    {
+    "id": "royalty",
+    "name": "Royalty",
+    "description": "Blessed with being born into the majestic life. Yet you choose everything else.",
     "bonuses": [
       { "stat": "agility", "value": 3 },
       { "stat": "intelligence", "value": 1 }
     ]
   }
+
 ]
