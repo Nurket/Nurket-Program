@@ -14,7 +14,9 @@
     "intelligence": 6,
     "spirit": 7,
     "baseHealth": 120,
-    "baseMana": 60
+    "baseMana": 60,
+    "defence": 50,
+    "magicDefence": 25
   },
   "bonus": [
     {
@@ -76,7 +78,9 @@
       "intelligence": 7,
       "spirit": 6,
       "baseHealth": 90,
-      "baseMana": 70
+      "baseMana": 70,
+    "defence": 50,
+    "magicDefence": 25
     },
     "bonus": [
       {
@@ -138,7 +142,9 @@
       "intelligence": 12,
       "spirit": 9,
       "baseHealth": 80,
-      "baseMana": 120
+      "baseMana": 120,
+    "defence": 50,
+    "magicDefence": 25
     },
     "bonus": [
       {
@@ -204,7 +210,9 @@
       "intelligence": 6,
       "spirit": 8,
       "baseHealth": 100,
-      "baseMana": 80
+      "baseMana": 80,
+      "defence": 50,
+      "magicDefence": 25
     },
     "bonus": [
       {
@@ -266,7 +274,10 @@
     "intelligence": 8,
     "spirit": 5,
     "baseHealth": 85,
-    "baseMana": 50
+    "baseMana": 50,
+    "defence": 50,
+    "magicDefence": 25
+    
   },
   "bonus": [
     {
@@ -328,7 +339,9 @@
     "intelligence": 4,
     "spirit": 6,
     "baseHealth": 140,
-    "baseMana": 30
+    "baseMana": 30,
+    "defence": 50,
+    "magicDefence": 25
   },
   "bonus": [
     {
