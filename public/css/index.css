@@ -70,6 +70,17 @@ body {
 }
 
 /* Class list container - grid layout for cards */
+#contentContainer {
+  background-color: #3d3d3d;
+  padding: 30px;
+  border: 2px solid #222;
+  border-radius: 0; /* Keep corners sharp if desired */
+  width: 90%;
+  max-width: 1300px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+
 #class-list-container {
     max-width: 1600px;
     min-width: 800px;
@@ -218,4 +229,29 @@ body {
   max-width: 1200px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
   color: #fff;
+}
+
+
+
+/* Character last display confirm */
+.username-input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.class-image {
+  max-width: 200px;
+  display: block;
+  margin: 10px auto;
+  border: 2px solid #000000;
+  border-radius: 10px;
+}
+
+
+#reviewContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

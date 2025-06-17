@@ -16,7 +16,7 @@
 
 <!-- Main Menu -->
 <div id="main-menu-section" class="app-section">
-  <div id="contentContainer">
+  <div id="menuContainer">
     <img src="/images/kof.png" alt="Error icon">
     <button id="create-character-btn">Create Character</button>
     <button id="load-game-btn">Game saves</button>
@@ -77,23 +77,28 @@
   </div>
 </div>
 
-<!-- confirm all choices display + username input-->
+
+<!-- confirm all choices display + username input -->
 <div id="character-review-section" class="app-section hidden">
-<div id="contentContainer">
+  <div id="contentContainer">
 
-<div class="header-row">
-  <button id="back-to-origin-btn" class="left-btn">Origin/Passive</button>
-  <h1>Origin & Passives</h1>
-  <button id="final-confirm-btn" class="right-btn">Confirm</button>
-</div>
+    <div class="header-row">
+      <button id="back-to-origin-btn" class="left-btn">Origin/Passive</button>
+      <h1>Confirm Character</h1>
+      <button id="final-confirm-btn" class="right-btn">Confirm</button>
+    </div>
 
-<div id="username-input"></div>
-<div id="character-summary" class="summary-section"></div>
-</div>
+    <div id="reviewContent"> <!-- wrapping the content in content-->
+
+      <div id="username-input"></div>
+      <div id="character-summary" class="summary-section"></div>
+
+    </div>
+
+  </div>
 </div>
 
     <%- include('./partials/scripts.ejs') %>
-    <script src="/js/gameInfo.js"></script>
     <script src="/js/index.js"></script>
 </body>
 </html>

@@ -443,7 +443,7 @@ function renderUsernameInput() {
   const container = document.getElementById('username-input');
   container.innerHTML = `
     <label for="username">Character Name</label>
-    <input type="text" id="username" placeholder="Enter your character's name" style="width: 100%; padding: 10px; margin-top: 5px;">
+    <input type="text" id="username" class="username-input" placeholder="Enter your character's name">
   `;
 }
 
@@ -456,7 +456,7 @@ function renderFinalReview() {
   const summaryDiv = document.getElementById('character-summary');
   summaryDiv.innerHTML = `
     <h2>Your Character</h2>
-    <img src="${characterData.classImageUrl}" alt="Class Image" style="max-width: 200px; display: block; margin: 10px auto; border: 2px solid #ccc; border-radius: 10px;">
+    <img src="${characterData.classImageUrl}" alt="Class Image" class="class-image">
     
     <p><strong>Class:</strong> ${selectedClass?.name}</p>
     <p><strong>Gender:</strong> ${characterData.gender}</p>
@@ -466,9 +466,9 @@ function renderFinalReview() {
   `;
 
   if (!selectedClass || !origin || !uniquePassive) {
-  alert('Something went wrong preparing the review. Please go back and try again.');
-  return;
-}
+    alert('Something went wrong preparing the review. Please go back and try again.');
+    return;
+  }
 }
 
 
