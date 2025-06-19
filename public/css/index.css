@@ -19,7 +19,7 @@ body {
     left: 0;
     box-sizing: border-box;
 
-    background-image: url('/images/throneroom3.png');
+    background-image: url('/images/kingdomwallpaper.png');
     background-repeat: no-repeat;       /* Prevent image from repeating */
     background-size: cover;             /* Make image cover entire area */
     background-position: center center; /* Center the image */
@@ -30,7 +30,7 @@ body {
 
 /* Menu background */
 #main-menu-section {
-  background-image: url('/images/castleviewsnow.png'); /* adjust path as needed */
+  background-image: url('/images/kingdomwallpaper.png'); /* adjust path as needed */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

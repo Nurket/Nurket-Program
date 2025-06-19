@@ -81,7 +81,7 @@ async function loadCharacterFromDisk(slot = 1) {
   }
 }
 
-async function listAllSaves(maxSlots = 3) {
+async function listAllSaves(maxSlots = 1) {
   const saves = [];
   for (let slot = 1; slot <= maxSlots; slot++) {
     try {
@@ -165,6 +165,29 @@ loadGameBtn.addEventListener('click', async () => {
   loadGameContainer.classList.remove('hidden');
 });
 
+// check save:
+async function checkIfSaveExists() {
+  try {
+    await loadCharacterFromDisk(1);
+    return true; // save found
+  } catch {
+    return false; // no save
+  }
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const startBtn = document.getElementById("create-character-btn");
+
+  // Check if save exists
+  const hasSave = await checkIfSaveExists();
+
+  if (hasSave) {
+    startBtn.textContent = "Continue";
+    startBtn.addEventListener("click", () => {
+      window.location.href = "/game";  // Or game.html, depending on your routing
+    });
+  } 
+});
 // EXIT BUTTON ON MENU
 
 document.getElementById('exit-game-btn').addEventListener('click', () => {
@@ -486,7 +509,7 @@ document.addEventListener('click', (e) => {
     characterData.name = name;
 
     saveCharacterToDisk(characterData, 1);
-    showSection(mainMenuSection);
+    window.location.href = "/game";
   }
 });
 

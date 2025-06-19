@@ -4,8 +4,8 @@
   "name": "Knight",
   "description": "Honorable knight fighting for their queen, a bulwark of defense and unwavering resolve.",
   "images": {
-    "male": "/images/knight_male.png",
-    "female": "/images/knight_female.png"
+    "male": "/images/animewarriormale.png",
+    "female": "/images/animewarriorfemale.png"
   },
   "baseStats": {
     "strength": 12,
@@ -67,8 +67,8 @@
     "name": "Archer",
     "description": "A nimble combatant who excels at ranged attacks, picking off foes from a distance.",
     "images": {
-      "male": "/images/knight_male.png",
-      "female": "/images/knight_male.png"
+      "male": "/images/animewarriormale.png",
+      "female": "/images/animewarriorfemale.png"
     },
     "baseStats": {
       "strength": 7,
@@ -130,8 +130,8 @@
     "name": "Mage",
     "description": "A scholar of arcane arts, wielding potent elemental magic and controlling the battlefield.",
     "images": {
-      "male": "/images/knight_male.png",
-      "female": "/images/knight_male.png"
+      "male": "/images/animewarriormale.png",
+      "female": "/images/animewarriorfemale.png"
     },
     "baseStats": {
       "strength": 5,
@@ -197,8 +197,8 @@
     "name": "Monk",
     "description": "A master of martial arts, relying on speed, precision, and inner spiritual energy.",
     "images": {
-      "male": "/images/knight_male.png",
-      "female": "/images/knight_male.png"
+      "male": "/images/animewarriormale.png",
+      "female": "/images/animewarriorfemale.png"
     },
     "baseStats": {
       "strength": 9,
@@ -260,8 +260,8 @@
   "name": "Rogue",
   "description": "A nimble infiltrator who thrives in the shadows, exploiting enemies with precise strikes and evasion.",
   "images": {
-    "male": "/images/knight_male.png",
-    "female": "/images/knight_male.png"
+    "male": "/images/animewarriormale.png",
+    "female": "/images/animewarriorfemale.png"
   },
   "baseStats": {
     "strength": 8,
@@ -324,8 +324,8 @@
   "name": "Barbarian",
   "description": "A savage force of nature whose rage fuels overwhelming strength and relentless ferocity.",
   "images": {
-    "male": "/images/knight_male.png",
-    "female": "/images/knight_male.png"
+    "male": "/images/animewarriormale.png",
+    "female": "/images/animewarriorfemale.png"
   },
   "baseStats": {
     "strength": 15,
