@@ -1,0 +1,6 @@
+body {
+        background-image: url('/images/kingdomwallpaper.png');
+    background-repeat: no-repeat;       /* Prevent image from repeating */
+    background-size: cover;             /* Make image cover entire area */
+    background-position: center center; /* Center the image */
+}
