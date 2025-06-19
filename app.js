@@ -25,8 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bootstrap-icons', express.static(path.join(__dirname, 'node_modules/bootstrap-icons')));
 
 app.use('/', indexRouter);
-app.use('/', gameRouter);
-app.use('/', creationRouter);
+app.use('/game', gameRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

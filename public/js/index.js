@@ -32,55 +32,38 @@ const characterData = {
 };
 
 
-// SAVING AND LOADING AND STUFF
-const fs = require('fs');
+// SAVE/LOADING STUFF
+const fs = require('fs').promises;
 const path = require('path');
 const { ipcRenderer } = require('electron');
 
+// Get save file path for given slot
 async function getSaveFilePath(slot = 1) {
   const userDataPath = await ipcRenderer.invoke('get-user-data-path');
   return path.join(userDataPath, `character_save_${slot}.json`);
 }
 
+// Save character data
 async function saveCharacterToDisk(characterData, slot = 1) {
   try {
     const filePath = await getSaveFilePath(slot);
-    fs.writeFile(filePath, JSON.stringify(characterData, null, 2), (err) => {
-      if (err) {
-        console.error('Failed to save character:', err);
-        alert('Error saving character data!');
-      } else {
-        console.log(`Character saved to slot ${slot}`);
-        alert(`Character saved successfully to slot ${slot}!`);
-      }
-    });
-  } catch (e) {
-    console.error('Error getting save file path:', e);
+    await fs.writeFile(filePath, JSON.stringify(characterData, null, 2));
+    console.log(`Character saved to slot ${slot}`);
+    alert(`Character saved successfully to slot ${slot}!`);
+  } catch (err) {
+    console.error('Failed to save character:', err);
+    alert('Error saving character data!');
   }
 }
 
+// Load character data
 async function loadCharacterFromDisk(slot = 1) {
-  try {
-    const filePath = await getSaveFilePath(slot);
-    return new Promise((resolve, reject) => {
-      fs.readFile(filePath, 'utf-8', (err, data) => {
-        if (err) {
-          reject(err);
-        } else {
-          try {
-            resolve(JSON.parse(data));
-          } catch (e) {
-            reject(e);
-          }
-        }
-      });
-    });
-  } catch (e) {
-    console.error('Error getting save file path:', e);
-    throw e;
-  }
+  const filePath = await getSaveFilePath(slot);
+  const data = await fs.readFile(filePath, 'utf-8');
+  return JSON.parse(data);
 }
 
+// List all saves
 async function listAllSaves(maxSlots = 1) {
   const saves = [];
   for (let slot = 1; slot <= maxSlots; slot++) {
@@ -88,36 +71,57 @@ async function listAllSaves(maxSlots = 1) {
       const data = await loadCharacterFromDisk(slot);
       saves.push({ slot, data });
     } catch {
-      // no save or failed to read; skip
+      // No save, skip
     }
   }
   return saves;
 }
 
-// Delete save file by slot
+// Delete save
 async function deleteSave(slot = 1) {
   try {
     const filePath = await getSaveFilePath(slot);
-    fs.unlink(filePath, (err) => {
-      if (err) {
-        console.error(`Failed to delete save slot ${slot}:`, err);
-        alert(`Could not delete save slot ${slot}. It might not exist.`);
-      } else {
-        alert(`Save slot ${slot} deleted successfully.`);
-        loadGameBtn.click(); // Refresh the save list after deletion
-      }
-    });
-  } catch (e) {
-    console.error('Error deleting save file:', e);
+    await fs.unlink(filePath);
+    alert(`Save slot ${slot} deleted successfully.`);
+    await refreshSaveUI();
+    await updateStartButton();  // ✅ Update button AFTER deletion
+  } catch (err) {
+    console.error(`Failed to delete save slot ${slot}:`, err);
+    alert(`Could not delete save slot ${slot}.`);
   }
 }
 
-// UI and event listeners
+// Check if save exists
+async function checkIfSaveExists() {
+  try {
+    await loadCharacterFromDisk(1);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
-const loadGameBtn = document.getElementById('load-game-btn');
-const loadGameContainer = document.getElementById('load-game-container');
+// Update start button based on save existence
+async function updateStartButton() {
+  const startBtn = document.getElementById("create-character-btn");
+  const hasSave = await checkIfSaveExists();
 
-loadGameBtn.addEventListener('click', async () => {
+  if (hasSave) {
+    startBtn.textContent = "Continue";
+    startBtn.onclick = () => {
+      window.location.href = "/game";
+    };
+  } else {
+    startBtn.textContent = "Create Character";
+    startBtn.onclick = () => {
+      showSection(characterCreationSection);
+    };
+  }
+}
+
+// Refresh load game UI
+async function refreshSaveUI() {
+  const loadGameContainer = document.getElementById('load-game-container');
   const saves = await listAllSaves();
 
   if (saves.length === 0) {
@@ -126,6 +130,9 @@ loadGameBtn.addEventListener('click', async () => {
     loadGameContainer.innerHTML = '<h3>Select a save to load or delete:</h3>';
 
     saves.forEach(save => {
+      const container = document.createElement('div');
+      container.style.margin = '5px 0';
+
       const btnLoad = document.createElement('button');
       btnLoad.textContent = `Load Slot ${save.slot}: ${save.data.name || 'Unnamed Character'}`;
       btnLoad.style.marginRight = '10px';
@@ -139,55 +146,35 @@ loadGameBtn.addEventListener('click', async () => {
         selectedClassId = characterData.classId || null;
 
         alert(`Loaded character: ${characterData.name}`);
-
         showSection(characterReviewSection);
         renderUsernameInput();
         renderFinalReview();
-
         loadGameContainer.classList.add('hidden');
       });
 
-      btnDelete.addEventListener('click', () => {
+      btnDelete.addEventListener('click', async () => {
         if (confirm(`Are you sure you want to delete save slot ${save.slot}?`)) {
-          deleteSave(save.slot);
+          await deleteSave(save.slot);
         }
       });
 
-      const container = document.createElement('div');
-      container.style.margin = '5px 0';
       container.appendChild(btnLoad);
       container.appendChild(btnDelete);
-
       loadGameContainer.appendChild(container);
     });
   }
-
-  loadGameContainer.classList.remove('hidden');
-});
-
-// check save:
-async function checkIfSaveExists() {
-  try {
-    await loadCharacterFromDisk(1);
-    return true; // save found
-  } catch {
-    return false; // no save
-  }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-  const startBtn = document.getElementById("create-character-btn");
-
-  // Check if save exists
-  const hasSave = await checkIfSaveExists();
-
-  if (hasSave) {
-    startBtn.textContent = "Continue";
-    startBtn.addEventListener("click", () => {
-      window.location.href = "/game";  // Or game.html, depending on your routing
-    });
-  } 
+// Handle load game button click
+document.getElementById('load-game-btn').addEventListener('click', async () => {
+  await refreshSaveUI();
+  document.getElementById('load-game-container').classList.remove('hidden');
 });
+
+// Initialize on page load
+document.addEventListener("DOMContentLoaded", updateStartButton);
+
+
 // EXIT BUTTON ON MENU
 
 document.getElementById('exit-game-btn').addEventListener('click', () => {

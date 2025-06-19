@@ -1,22 +1,53 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="/game">game <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/game">game</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="/css/game.css">
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="container character-info">
+      <div class="character-name">
+        <%= characterData ? characterData.name : "No character loaded" %>
+      </div>
+      <div class="class-picture">
+        <% if (characterData && characterData.classImageUrl) { %>
+          <img src="<%= characterData.classImageUrl %>" alt="Class Picture">
+        <% } else { %>
+          <img src="/images/default.png" alt="No class image">
+        <% } %>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="nav-item">Enter Castle</div>
+    </div>
+
+        <div class="container skills">
+      <p>Skills</p>
+      <div class="nav-item">Fishing</div>
+      <div class="nav-item">Crafting</div>
+      <div class="nav-item">Mount Training</div>
+      <div class="nav-item">Social</div>
+    </div>
+
+    <div class="container activities">
+      <p>Activities</p>
+      <div class="nav-item">Dungeons</div>
+      <div class="nav-item">Uberbosses</div>
+      <div class="nav-item">Arena</div>
+      <div class="nav-item">Endless tower</div>
+    </div>
+
+
+    <div class="container exit">
+      <a href="/" class="nav-item">Back to menu</a>
+    </div>
+
   </div>
-</nav>
+
+</body>
+</html>

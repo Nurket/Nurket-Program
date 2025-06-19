@@ -1,20 +1,26 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  background-color: #222; /* Optional: slightly darker background for contrast */
 }
 
 .navbar {
-  width: 200px;
+  width: 220px; /* slightly wider for padding */
   background-color: #333;
   color: white;
   display: flex;
   flex-direction: column;
   padding: 10px;
   height: 100vh;
+  box-sizing: border-box;
 }
 
 .container {
   margin-bottom: 20px;
+  border: 1px solid #666;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #3a3a3a;
 }
 
 .character-info {
@@ -24,16 +30,18 @@ body {
   text-align: center;
 }
 
-.class-picture {
-  width: 100px;
-  height: 100px;
-  background-color: #555;
+.class-picture img {
+  width: 100%;
+  height: auto;
+  max-width: 150px; /* Limit the max width */
+  border-radius: 8px;
   margin-top: 8px;
-  /* Replace with <img> if you have a picture */
+  object-fit: contain;
+  display: block;
 }
 
 .nav-item {
-  padding: 8px 12px;
+  padding: 10px;
   background-color: #444;
   margin: 5px 0;
   border-radius: 4px;
@@ -41,6 +49,8 @@ body {
   display: block;
   text-decoration: none;
   color: white;
+  text-align: center;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .nav-item:hover {
@@ -48,7 +58,11 @@ body {
   color: #ddd;
 }
 
-.skills {
+.skills, .activities, .exit {
   display: flex;
   flex-direction: column;
+}
+
+p {
+  margin: 5px 0 1
 }

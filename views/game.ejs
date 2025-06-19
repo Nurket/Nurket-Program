@@ -1,40 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vertical Navbar</title>
+  <%- include('./partials/head.ejs') %>
+    <title>Kingdom</title>
   <link rel="stylesheet" href="/css/navbar.css">
   <link rel="stylesheet" href="/css/game.css">
 </head>
 <body>
 
-  <div class="navbar">
-    <div class="container character-info">
-      <div class="character-name">Character Name</div>
-      <div class="class-picture">Class Picture</div>
-    </div>
-    <div class="container">
-      <div class="nav-item">Enter Castle</div>
-    </div>
-    <div class="container activities">
-    <p> Activites</p>
-      <div class="nav-item">Dungeons</div>
-      <div class="nav-item">Uberbosses</div>
-      <div class="nav-item">Arena</div>
-      <div class="nav-item">Endless tower</div>
-    </div>
-    <div class="container skills">
-    <p>Skills</p>
-      <div class="nav-item">Fishing</div>
-      <div class="nav-item">Fishing</div>
-      <div class="nav-item">Mount Training</div>
-      <div class="nav-item">Romance</div>
-    </div>
-    <div class="container exit">
-      <a href="/" class="nav-item">Back to menu</a>
-    </div>
-  </div>
+  <%- include('./partials/navbar.ejs', { characterData: characterData }) %>
 
+  <p>game main page</p>
+
+  <%- include('./partials/scripts.ejs') %>
 </body>
 </html>
