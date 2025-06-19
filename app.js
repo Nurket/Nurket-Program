@@ -8,6 +8,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var gameRouter = require('./routes/game');
 var creationRouter = require('./routes/characterCreation');
+const characterAndInventoryRouter = require('./routes/characterAndInventory');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use('/bootstrap-icons', express.static(path.join(__dirname, 'node_modules/bo
 
 app.use('/', indexRouter);
 app.use('/game', gameRouter);
+app.use('/game', characterAndInventoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -42,6 +44,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+console.log("Character routes loaded");
 
 module.exports = app;
 
