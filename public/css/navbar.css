@@ -58,7 +58,7 @@ body {
   color: #ddd;
 }
 
-.skills, .activities, .exit {
+.castle, .skills, .activities, .exit {
   display: flex;
   flex-direction: column;
 }
