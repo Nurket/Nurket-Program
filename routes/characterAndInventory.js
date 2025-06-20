@@ -22,8 +22,6 @@ router.get('/character-inventory', async (req, res) => {
       characterData = {
         name: 'Default Hero',
         classId: 'Warrior',
-        level: 1,
-        hp: 100,
         equipment: {},
         inventory: [],
         specializationId: null,

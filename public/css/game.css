@@ -3,5 +3,10 @@ body {
     background-repeat: no-repeat;       /* Prevent image from repeating */
     background-size: cover;             /* Make image cover entire area */
     background-position: center center; /* Center the image */
+
+  padding-left: 220px; /* makes everything go from the nav bar not bellow */
+  box-sizing: border-box;
+
+  
 }
 

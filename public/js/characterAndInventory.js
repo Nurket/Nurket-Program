@@ -1,37 +1,48 @@
-// navbar.js
+document.addEventListener('DOMContentLoaded', async () => {
+  const container = document.getElementById('char-inventory-container');
 
-const container = document.getElementById('char-inventory-container');
-const btn = document.getElementById('show-char-inventory-btn');
-
-btn.addEventListener('click', async () => {
   try {
-    if (container.classList.contains('active')) {
-      container.classList.remove('active');
-      container.innerHTML = '';
-      return;
-    }
-
     const response = await fetch('/game/character-inventory');
     if (!response.ok) throw new Error('Failed to fetch character data');
 
     const data = await response.json();
 
-    
     const stats = data.derivedStats || {};
+
+
 const statsHtml = Object.entries(stats).map(([stat, value]) => {
-  return `<p>${stat}: ${value}</p>`;
+  if (stat === 'baseHealth') {
+    return `
+      <div class="stat-bar health-bar" style="--value: 100">
+        <span>${value} HP</span>
+      </div>
+    `;
+  } else if (stat === 'baseMana') {
+    return `
+      <div class="stat-bar mana-bar" style="--value: 100">
+        <span>${value} MP</span>
+      </div>
+    `;
+  } else {
+    return `<p>${stat}: ${value}</p>`;
+  }
 }).join('');
 
     const html = `
       <section class="char-inventory-section">
-        <div class="character-info">
+        <div class="top-row">
           <div class="character-details">
             <h2>Character</h2>
             <p>Name: ${data.name || 'Unknown'}</p>
             <p>Class: ${data.classId || 'None'}</p>
             <div class="character-stats">${statsHtml}</div>
           </div>
-          <div class="character-equipment" style="background-image: url('${data.classImageUrl || '/images/default.png'}');">
+          
+          <div class="character-class-image">
+            <img src="${data.classImageUrl || '/images/default.png'}" alt="Class Image">
+          </div>
+
+          <div class="character-equipment">
             <h2>Equipment</h2>
             <p>Helmet: ${data.equipment?.helmet?.name || 'None'}</p>
             <p>Necklace: ${data.equipment?.necklace?.name || 'None'}</p>
@@ -57,10 +68,7 @@ const statsHtml = Object.entries(stats).map(([stat, value]) => {
     `;
 
     container.innerHTML = html;
-    container.classList.add('active');
-
   } catch (error) {
-    alert('Failed to load character inventory.');
-    console.error(error);
+    console.error('Failed to load character inventory:', error);
   }
 });

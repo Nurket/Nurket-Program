@@ -6,19 +6,23 @@
   <link rel="stylesheet" href="/css/navbar.css">
   <link rel="stylesheet" href="/css/game.css">
     <link rel="stylesheet" href="/css/characterAndInventory.css">
+    <link rel="stylesheet" href="/css/skillTree.css">
 
 </head>
 <body>
 
-  <%- include('./partials/navbar.ejs', { characterData: characterData }) %>
-<div id="char-inventory-container"></div>
+<%- include('./partials/navbar.ejs') %>
 
+<div id="char-inventory-container" class="nav-panel" style="display: none;"></div>
 
+<div id="skill-tree-container" class="nav-panel" style="display: none;">
+  <%- include('partials/skillTree') %>
 </div>
 
-  <p>game main page</p>
 
   <%- include('./partials/scripts.ejs') %>
   <script src="/js/characterAndInventory.js"></script>
+    <script src="/js/SkillTree.js"></script>
+    <script src="/js/navbar.js"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@ html, body {
   left: 0;
   width: 220px;
   height: 100vh;
-  background-color: #333;  /* solid background */
+  background-color: #0e0e0e;  /* solid background */
   color: white;
   display: flex;
   flex-direction: column;
@@ -23,11 +23,11 @@ html, body {
 }
 
 .container {
-  margin-bottom: 20px;
+
   border: 1px solid #666;
   border-radius: 8px;
   padding: 10px;
-  background-color: #3a3a3a;
+  background-color: #222222;
 }
 
 .character-info {
@@ -48,9 +48,9 @@ html, body {
 }
 
 .nav-item {
-  padding: 10px;
+  padding: 12px 10px;
   background-color: #444;
-  margin: 5px 0;
+  margin: 3px 0;
   border-radius: 4px;
   user-select: none;
   display: block;
@@ -58,6 +58,17 @@ html, body {
   color: white;
   text-align: center;
   transition: background-color 0.2s, color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;       /* <-- important for buttons */
+  cursor: pointer;    /* make button feel clickable */
+  font-family: inherit; /* ensure font matches rest of site */
+  font-size: inherit;
+}
+
+.nav-item.active {
+  background-color: #666;
+  color: #ddd;
 }
 
 .nav-item:hover {

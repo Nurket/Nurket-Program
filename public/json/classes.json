@@ -8,12 +8,12 @@
     "female": "/images/animewarriorfemale.png"
   },
   "baseStats": {
+    "baseHealth": 120,
+    "baseMana": 60,
     "strength": 12,
     "dexterity": 8,
     "constitution": 10,
-    "intelligence": 6,
-    "baseHealth": 120,
-    "baseMana": 60
+    "intelligence": 6
 
   },
   "bonus": [

@@ -15,14 +15,6 @@ async function combineStats(characterData) {
 
   let combinedStats = { ...charClass.baseStats };
 
-  // class baseHealth can be inside baseStats or outside
-  if (charClass.baseStats?.hp) {
-    combinedStats.hp = charClass.baseStats.hp;
-  } else if (charClass.baseHealth) {
-    combinedStats.hp = charClass.baseHealth;
-  } else {
-    combinedStats.hp = 100;
-  }
 
   if (charClass.bonus) {
     for (const [stat, val] of Object.entries(charClass.bonus)) {
