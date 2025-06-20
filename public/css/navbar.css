@@ -1,7 +1,7 @@
 html, body {
   height: 100%;
   margin: 0;
-  background-color: #222; /* or your preferred bg */
+
   font-family: Arial, sans-serif;
   color: white;
 }
@@ -76,12 +76,3 @@ p {
 
 
 
-/* char inv button effect*/
-#char-inventory-container {
-  margin-left: 220px; /* push right of navbar */
-  height: 100vh;
-  padding: 20px;
-  background-color: #2b2b2b; /* match your site style */
-  overflow-y: auto;
-  display: none;
-}

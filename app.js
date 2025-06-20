@@ -7,7 +7,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var gameRouter = require('./routes/game');
-var creationRouter = require('./routes/characterCreation');
+//var creationRouter = require('./routes/characterCreation');
 const characterAndInventoryRouter = require('./routes/characterAndInventory');
 
 var app = express();

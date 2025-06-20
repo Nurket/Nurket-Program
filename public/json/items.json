@@ -1,0 +1,33 @@
+{
+  "long_sword": {
+    "id": "long_sword",
+    "name": "Long Sword",
+    "type": "weapon",
+    "handed": "one-handed",
+    "equipSlot": ["mainHand", "offHand"],
+    "stats": {
+      "attack": 10
+    },
+    "bonus":{"strength": 1}
+  },
+  "shield": {
+    "id": "shield",
+    "name": "Shield",
+    "type": "shield",
+    "equipSlot": ["offHand"],
+    "stats": {
+      "defense": 5
+    },
+    "bonus":{"strength": 0}
+  },
+  "full_plate_armor": {
+    "id": "full_plate_armor",
+    "name": "Full Plate Armor",
+    "type": "armor",
+    "equipSlot": ["body"],
+    "stats": {
+      "defense": 20
+    },
+    "bonus":{"strength": 0}
+  }
+}

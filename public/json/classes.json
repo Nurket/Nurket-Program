@@ -13,9 +13,8 @@
     "constitution": 10,
     "intelligence": 6,
     "baseHealth": 120,
-    "baseMana": 60,
-    "defence": 50,
-    "magicDefence": 25
+    "baseMana": 60
+
   },
   "bonus": [
     {
@@ -60,7 +59,7 @@
       "image": "/images/templar.png"
     }
   ],
-  "startingGear": ["long_sword", "kite_shield", "full_plate_armor", "healing_potion"]
+  "startingGear": ["long_sword", "shield", "full_plate_armor"]
 },
   {
     "id": "archer",
@@ -76,9 +75,7 @@
       "constitution": 8,
       "intelligence": 7,
       "baseHealth": 90,
-      "baseMana": 70,
-    "defence": 50,
-    "magicDefence": 25
+      "baseMana": 70
     },
     "bonus": [
       {
@@ -139,9 +136,7 @@
       "constitution": 7,
       "intelligence": 12,
       "baseHealth": 80,
-      "baseMana": 120,
-    "defence": 50,
-    "magicDefence": 25
+      "baseMana": 120
     },
     "bonus": [
       {
@@ -206,9 +201,7 @@
       "constitution": 9,
       "intelligence": 6,
       "baseHealth": 100,
-      "baseMana": 80,
-      "defence": 50,
-      "magicDefence": 25
+      "baseMana": 80
     },
     "bonus": [
       {
@@ -269,9 +262,7 @@
     "constitution": 7,
     "intelligence": 8,
     "baseHealth": 85,
-    "baseMana": 50,
-    "defence": 50,
-    "magicDefence": 25
+    "baseMana": 50
     
   },
   "bonus": [
@@ -333,9 +324,7 @@
     "constitution": 12,
     "intelligence": 4,
     "baseHealth": 140,
-    "baseMana": 30,
-    "defence": 50,
-    "magicDefence": 25
+    "baseMana": 30
   },
   "bonus": [
     {

@@ -5,17 +5,20 @@
     <title>Kingdom</title>
   <link rel="stylesheet" href="/css/navbar.css">
   <link rel="stylesheet" href="/css/game.css">
+    <link rel="stylesheet" href="/css/characterAndInventory.css">
+
 </head>
 <body>
 
   <%- include('./partials/navbar.ejs', { characterData: characterData }) %>
+<div id="char-inventory-container"></div>
 
-  <div id="overlay" class="hidden">
-  <div id="char-inventory-container" class="centered-box"></div>
+
 </div>
 
   <p>game main page</p>
 
   <%- include('./partials/scripts.ejs') %>
+  <script src="/js/characterAndInventory.js"></script>
 </body>
 </html>

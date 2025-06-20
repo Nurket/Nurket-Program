@@ -1,0 +1,51 @@
+.char-inventory-section {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+}
+
+.char-inventory-section .character-inventory {
+  flex: 1;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+}
+
+.char-inventory-section .character-info {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.char-inventory-section .character-details {
+  background-color: #444;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+}
+
+.char-inventory-section .character-equipment {
+    
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%);
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+
+#char-inventory-container {
+  display: none; /* initially hidden */
+  padding: 40px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.7); /* translucent black */
+  color: white; /* so text inside is visible */
+}
+
+#char-inventory-container.active {
+  display: block;
+}

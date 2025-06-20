@@ -22,7 +22,7 @@ const uniquePassiveListDiv = document.getElementById('unique-passive-list');
 const additionalPassivesListDiv = document.getElementById('additional-passives-list');
 
 const characterData = {
-  classId: null,             // I changed 'class' to 'classId' to match your code usage
+  classId: null,            
   originId: null,
   uniquePassiveIndex: null,
   additionalPassiveIndices: [],
@@ -31,6 +31,63 @@ const characterData = {
   classImageUrl: null,
 };
 
+// gear stuff starting
+// Utility to load JSON files from public folder
+async function loadJSON(url) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`Failed to load JSON from ${url}`);
+  return await response.json();
+}
+
+// Initialize character with starting gear from classes.json and items.json
+async function initializeCharacterWithGear(selectedClassId, characterName) {
+  const classes = await loadJSON('/json/classes.json');
+  const items = await loadJSON('/json/items.json');
+
+  const selectedClass = classes.find(c => c.id === selectedClassId);
+  if (!selectedClass) throw new Error('Class not found');
+
+  const equipment = {
+    helmet: null,
+    necklace: null,
+    body: null,
+    gloves: null,
+    rings1: null,
+    rings2: null,
+    boots: null,
+    mainHand: null,
+    offHand: null
+  };
+
+  const inventory = [];
+
+  for (const itemId of selectedClass.startingGear) {
+    const item = items[itemId];
+    if (!item) {
+      console.warn(`Item ${itemId} not found in items.json`);
+      continue;
+    }
+    let equipped = false;
+    for (const slot of item.equipSlot) {
+      if (!equipment[slot]) {
+        equipment[slot] = item.id;
+        equipped = true;
+        break;
+      }
+    }
+    if (!equipped) {
+      inventory.push({ id: item.id, quantity: 1 });
+    }
+  }
+
+  return {
+    name: characterName,
+    classId: selectedClass.id,
+    classImageUrl: selectedClass.images?.male || '',
+    equipment,
+    inventory,
+  };
+}
 
 // SAVE/LOADING STUFF
 const fs = require('fs').promises;
@@ -483,8 +540,10 @@ function renderFinalReview() {
 
 
 // confirm final choices
-document.addEventListener('click', (e) => {
+document.addEventListener('click', async (e) => {
   if (e.target && e.target.id === 'final-confirm-btn') {
+    e.preventDefault();
+
     const usernameInput = document.getElementById('username');
     const name = usernameInput?.value.trim();
 
@@ -493,10 +552,26 @@ document.addEventListener('click', (e) => {
       return;
     }
 
-    characterData.name = name;
+    // Get selected classId from your UI
+    // (Assuming you store it somewhere, e.g. in characterData.classId or a dropdown)
+    const selectedClassId = characterData.classId; 
+    if (!selectedClassId) {
+      alert('Please select a class.');
+      return;
+    }
 
-    saveCharacterToDisk(characterData, 1);
-    window.location.href = "/game";
+    try {
+      const newCharacter = await initializeCharacterWithGear(selectedClassId, name);
+      
+      // Save new character to disk
+      await saveCharacterToDisk(newCharacter, 1);
+      
+      // Redirect to game
+      window.location.href = "/game";
+    } catch (err) {
+      console.error(err);
+      alert('Failed to create character: ' + err.message);
+    }
   }
 });
 
