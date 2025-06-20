@@ -16,7 +16,8 @@
     "type": "shield",
     "equipSlot": ["offHand"],
     "stats": {
-      "defense": 5
+      "defence": 5,
+      "magicDefence": 1
     },
     "bonus":{"strength": 0}
   },
@@ -26,7 +27,8 @@
     "type": "armor",
     "equipSlot": ["body"],
     "stats": {
-      "defense": 20
+      "defence": 20,
+      "magicDefence": 5
     },
     "bonus":{"strength": 0}
   }
