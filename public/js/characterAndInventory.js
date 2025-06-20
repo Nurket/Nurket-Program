@@ -9,24 +9,41 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const stats = data.derivedStats || {};
 
+    const statsHtml = Object.entries(stats).map(([stat, value]) => {
+      if (stat === 'baseHealth') {
+        return `
+          <div class="stat-bar health-bar" style="--value: 100">
+            <span>${value} HP</span>
+          </div>
+        `;
+      } else if (stat === 'baseMana') {
+        return `
+          <div class="stat-bar mana-bar" style="--value: 100">
+            <span>${value} MP</span>
+          </div>
+        `;
+      } else {
+        return `<p>${stat}: ${value}</p>`;
+      }
+    }).join('');
 
-const statsHtml = Object.entries(stats).map(([stat, value]) => {
-  if (stat === 'baseHealth') {
-    return `
-      <div class="stat-bar health-bar" style="--value: 100">
-        <span>${value} HP</span>
-      </div>
-    `;
-  } else if (stat === 'baseMana') {
-    return `
-      <div class="stat-bar mana-bar" style="--value: 100">
-        <span>${value} MP</span>
-      </div>
-    `;
-  } else {
-    return `<p>${stat}: ${value}</p>`;
-  }
-}).join('');
+    // INVENTORY GRID LOGIC HERE:
+    const inventorySlots = 42;
+    const filledSlots = data.inventory ? data.inventory.length : 0;
+
+    const inventoryHtml = Array.from({ length: inventorySlots }, (_, index) => {
+      if (index < filledSlots) {
+        const item = data.inventory[index];
+        return `
+          <div class="inventory-slot">
+            <div class="item-name">${item.name}</div>
+            <div class="item-quantity">x${item.quantity}</div>
+          </div>
+        `;
+      } else {
+        return `<div class="inventory-slot empty-slot"></div>`;
+      }
+    }).join('');
 
     const html = `
       <section class="char-inventory-section">
@@ -58,11 +75,9 @@ const statsHtml = Object.entries(stats).map(([stat, value]) => {
 
         <div class="character-inventory">
           <h2>Inventory</h2>
-          ${
-            data.inventory && data.inventory.length > 0
-              ? `<ul>${data.inventory.map(item => `<li>${item.name} (Qty: ${item.quantity})</li>`).join('')}</ul>`
-              : `<p>No items in inventory.</p>`
-          }
+          <div class="inventory-grid">
+            ${inventoryHtml}
+          </div>
         </div>
       </section>
     `;
