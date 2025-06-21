@@ -1,6 +1,7 @@
 {
   "long_sword": {
     "id": "long_sword",
+    "rarity": "common",
     "name": "Long Sword",
     "type": "weapon",
     "handed": "one-handed",
@@ -12,24 +13,57 @@
   },
   "shield": {
     "id": "shield",
+    "rarity": "common",
     "name": "Shield",
     "type": "shield",
     "equipSlot": ["offHand"],
     "stats": {
       "defence": 5,
       "magicDefence": 1
-    },
-    "bonus":{"strength": 0}
+    }
   },
   "full_plate_armor": {
     "id": "full_plate_armor",
+    "rarity": "common",
     "name": "Full Plate Armor",
     "type": "armor",
     "equipSlot": ["body"],
     "stats": {
       "defence": 20,
       "magicDefence": 5
-    },
-    "bonus":{"strength": 0}
+    }
+
+  },
+  "short_bow": {
+    "id": "short_bow",
+    "rarity": "common",
+    "name":"Short Bow",
+    "type": "weapon",
+    "equipSlot": ["mainHand"],
+    "stats": {
+      "attack": 8
+    }
+  },
+    "quiver": {
+    "id": "quiver",
+    "rarity": "common",
+    "name":"quiver",
+    "type": "weapon",
+    "equipSlot": ["offHand"],
+    "stats": {
+      "attack": 4
+    }
+  }, 
+  
+    "leather_armor": {
+    "id": "leather_armor",
+    "rarity": "common",
+    "name":"Leather Armor",
+    "type": "armor",
+    "equipSlot": ["body"],
+    "stats": {
+      "defence": 10
+    }
   }
 }
+

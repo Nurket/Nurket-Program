@@ -5,7 +5,7 @@
     "description": "You survived endless winters in the north. In return you got strong and independent.",
     "bonuses": [
       { "stat": "strength", "value": 2 },
-      { "stat": "endurance", "value": 2 }
+      { "stat": "constitution", "value": 2 }
     ]
   },
   {

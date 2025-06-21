@@ -105,7 +105,46 @@
   color: #ccc;
 }
 
+/* ITEM tooltip*/
+
+
+#item-tooltip {
+  position: absolute;
+  background: rgba(20, 20, 20, 0.95);
+  color: #f0f0f0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 2px solid #555;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  max-width: 280px;
+  z-index: 9999;
+  display: none;
+  transition: opacity 0.15s ease-in-out;
+  pointer-events: none;
+}
+
+/* Rarity colors */
+.tooltip-common { border-color: gray; }
+.tooltip-uncommon { border-color: green; }
+.tooltip-rare { border-color: blue; }
+.tooltip-epic { border-color: purple; }
+.tooltip-legendary { border-color: orange; }
+
+#item-tooltip strong {
+  color: #ffd700;
+  font-size: 16px;
+  margin-bottom: 8px;
+  display: block;
+}
+
 /* equipment css */
+
+.equipment-slot.drag-over {
+  border: 2px dashed yellow;
+  background-color: rgba(255, 255, 0, 0.1);
+}
 .equipment-grid {
   display: grid;
   grid-template-areas: 

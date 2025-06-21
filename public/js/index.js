@@ -40,7 +40,7 @@ async function loadJSON(url) {
 }
 
 // Initialize character with starting gear from classes.json and items.json
-async function initializeCharacterWithGear(selectedClassId, characterName) {
+async function initializeCharacterWithGear(selectedClassId, characterName, passives = {}, gender = 'male') {
   const classes = await loadJSON('/json/classes.json');
   const items = await loadJSON('/json/items.json');
 
@@ -61,31 +61,25 @@ async function initializeCharacterWithGear(selectedClassId, characterName) {
 
   const inventory = [];
 
-  for (const itemId of selectedClass.startingGear) {
-    const item = items[itemId];
-    if (!item) {
-      console.warn(`Item ${itemId} not found in items.json`);
-      continue;
-    }
-    let equipped = false;
-    for (const slot of item.equipSlot) {
-      if (!equipment[slot]) {
-        equipment[slot] = item.id;
-        equipped = true;
-        break;
-      }
-    }
-    if (!equipped) {
-      inventory.push({ id: item.id, quantity: 1 });
-    }
+for (const itemId of selectedClass.startingGear) {
+  const item = items[itemId];
+  if (!item) {
+    console.warn(`Item ${itemId} not found in items.json`);
+    continue;
   }
+  inventory.push({ id: item.id, quantity: 1 });
+}
 
   return {
     name: characterName,
     classId: selectedClass.id,
-    classImageUrl: selectedClass.images?.male || '',
+    classImageUrl: selectedClass.images?.[gender] || selectedClass.images?.male || '',
     equipment,
     inventory,
+    originId: passives.originId || null,
+    uniquePassiveIndex: passives.uniquePassiveIndex || null,
+    additionalPassiveIndices: passives.additionalPassiveIndices || [],
+    gender: gender,
   };
 }
 
@@ -560,18 +554,22 @@ document.addEventListener('click', async (e) => {
       return;
     }
 
-    try {
-      const newCharacter = await initializeCharacterWithGear(selectedClassId, name);
-      
-      // Save new character to disk
-      await saveCharacterToDisk(newCharacter, 1);
-      
-      // Redirect to game
-      window.location.href = "/game";
-    } catch (err) {
-      console.error(err);
-      alert('Failed to create character: ' + err.message);
-    }
+try {
+const newCharacter = await initializeCharacterWithGear(selectedClassId, name, {
+  originId: characterData.originId,
+  uniquePassiveIndex: characterData.uniquePassiveIndex,
+  additionalPassiveIndices: characterData.additionalPassiveIndices,
+}, currentGender);
+
+  // Save new character to disk
+  await saveCharacterToDisk(newCharacter, 1);
+  
+  // Redirect to game
+  window.location.href = "/game";
+} catch (err) {
+  console.error(err);
+  alert('Failed to create character: ' + err.message);
+}
   }
 });
 

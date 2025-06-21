@@ -120,7 +120,7 @@
       "image": "/images/templar.png"
     }
   ],
-    "startingGear": ["short_bow", "quiver_of_20_arrows", "leather_armor", "dagger"]
+    "startingGear": ["short_bow", "quiver", "leather_armor"]
   },
   {
     "id": "mage",

@@ -1,24 +1,17 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 const electron = require('electron');
 
-function loadCharacterFromDisk(slot = 1) {
-  return new Promise((resolve, reject) => {
+async function loadCharacterFromDisk(slot = 1) {
+  try {
     const userDataPath = electron.app.getPath('userData');
     const filePath = path.join(userDataPath, `character_save_${slot}.json`);
-    fs.readFile(filePath, 'utf-8', (err, data) => {
-      if (err) {
-        resolve(null);
-      } else {
-        try {
-          const characterData = JSON.parse(data);
-          resolve(characterData);
-        } catch (e) {
-          reject(e);
-        }
-      }
-    });
-  });
+    const data = await fs.readFile(filePath, 'utf-8');
+    return JSON.parse(data);
+  } catch (err) {
+    // File not found or parse error fallback
+    return null;
+  }
 }
 
 module.exports = loadCharacterFromDisk;

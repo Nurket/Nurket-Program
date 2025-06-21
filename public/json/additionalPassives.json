@@ -11,9 +11,9 @@
   {
     "id": "iron_skin",
     "name": "Iron Skin",
-    "description": "Reduces physical damage taken by 5.",
+    "description": "Increase defencce by 5.",
     "bonuses": [
-      { "effect": "incomming damage", "value": 5 }
+      { "stat": "defence", "value": 3 }
     ]
   },
     {
@@ -43,9 +43,9 @@
       {
     "id": "swiftness",
     "name": "Swiftness",
-    "description": "Increase attackspeed by 5",
+    "description": "Increase dexterity by 2",
     "bonuses": [
-      { "effect": "attackSpeed", "value": 5 }
+      { "stat": "dexterity", "value": 2 }
     ]
   }
 ]

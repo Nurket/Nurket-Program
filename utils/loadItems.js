@@ -8,3 +8,12 @@ function loadItems() {
 }
 
 module.exports = loadItems;
+
+/*
+Access to full item data with this in frontEnd. No need to fetch
+
+<script>
+  const itemsData = <%- JSON.stringify(allItems) %>;
+</script>
+
+*/
